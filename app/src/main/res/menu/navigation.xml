@@ -9,15 +9,9 @@
     <item
         android:id="@+id/navigation_order"
         android:icon="@drawable/dibu_ic_dd_x"
-        android:title="订单" />
+        android:title="配货清单" />
     <item
         android:id="@+id/navigation_goods"
         android:icon="@drawable/dibu_ic_sp_x"
         android:title="商品" />
-
-    <item
-        android:id="@+id/navigation_settings"
-        android:icon="@drawable/dibu_ic_sz_x"
-        android:title="设置" />
-
 </menu>
