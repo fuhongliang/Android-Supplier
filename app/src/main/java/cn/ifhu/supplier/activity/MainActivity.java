@@ -70,10 +70,10 @@ public class MainActivity extends BaseActivity {
             mPager.setCurrentItem(2,false);
             ((GoodsFragment)mFragments.get(2)).getCatsData();
             return true;
-        }else if (i == R.id.navigation_settings) {
-            item.setIcon(R.drawable.dibu_ic_sz_m);
-            mPager.setCurrentItem(3,false);
-            return true;
+//        }else if (i == R.id.navigation_settings) {
+//            item.setIcon(R.drawable.dibu_ic_sz_m);
+//            mPager.setCurrentItem(3,false);
+//            return true;
         }
         return false;
     }
@@ -108,22 +108,22 @@ public class MainActivity extends BaseActivity {
         MenuItem home = navigation.getMenu().findItem(R.id.navigation_home);
         MenuItem orders = navigation.getMenu().findItem(R.id.navigation_order);
         MenuItem goods = navigation.getMenu().findItem(R.id.navigation_goods);
-        MenuItem settings = navigation.getMenu().findItem(R.id.navigation_settings);
+//        MenuItem settings = navigation.getMenu().findItem(R.id.navigation_settings);
 
         home.setIcon(R.drawable.dibu_ic_sy_x);
         orders.setIcon(R.drawable.dibu_ic_dd_x);
         goods.setIcon(R.drawable.dibu_ic_sp_x);
-        settings.setIcon(R.drawable.dibu_ic_sz_x);
+//        settings.setIcon(R.drawable.dibu_ic_sz_x);
     }
 
     private void initViewPager() {
         ViewManager.getInstance().addFragment(0, HomeFragment.newInstance());
         ViewManager.getInstance().addFragment(1, OrdersFragment.newInstance());
         ViewManager.getInstance().addFragment(2, GoodsFragment.newInstance());
-        ViewManager.getInstance().addFragment(3, SettingsFragment.newInstance());
+//        ViewManager.getInstance().addFragment(3, SettingsFragment.newInstance());
         mFragments = ViewManager.getInstance().getAllFragment();
         mPager = findViewById(R.id.container_pager);
-        mPager.setOffscreenPageLimit(4);
+        mPager.setOffscreenPageLimit(3);
         mAdapter = new FragmentAdapter(getSupportFragmentManager(), mFragments);
         mPager.setAdapter(mAdapter);
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

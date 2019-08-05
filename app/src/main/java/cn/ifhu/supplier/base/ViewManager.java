@@ -14,7 +14,7 @@ import java.util.Stack;
 public class ViewManager {
 
     private static Stack<Activity> activityStack;
-    private static BaseFragment[] baseFragments = new BaseFragment[4];
+    private static BaseFragment[] baseFragments = new BaseFragment[3];
 
     public static ViewManager getInstance() {
         return ViewManagerHolder.sInstance;
