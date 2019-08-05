@@ -44,72 +44,6 @@
         android:layout_marginTop="-60dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/bg_new_order_white">
-        <!--消息管理-->
-        <LinearLayout
-            android:id="@+id/ll_notice"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:background="@drawable/home_ic_xiaoxi" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="消息管理"
-                android:textColor="@color/navigation_color"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <!--评论管理-->
-        <LinearLayout
-            android:id="@+id/ll_reviews"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:background="@drawable/home_ic_pinglun" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="评论管理"
-                android:textColor="@color/navigation_color"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <!--店铺设置-->
-        <LinearLayout
-            android:id="@+id/ll_store_settings"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:background="@drawable/home_ic_dianpu" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="店铺设置"
-                android:textColor="@color/navigation_color"
-                android:textSize="12sp" />
-        </LinearLayout>
         <!--财务结算-->
         <LinearLayout
             android:id="@+id/ll_finance"
@@ -157,6 +91,141 @@
                 android:textColor="@color/navigation_color"
                 android:textSize="12sp" />
         </LinearLayout>
+        <!--消息管理-->
+        <LinearLayout
+            android:id="@+id/ll_notice"
+            android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/home_ic_xiaoxi" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="消息管理"
+                android:textColor="@color/navigation_color"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <!--评论管理-->
+        <LinearLayout
+            android:id="@+id/ll_reviews"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/home_ic_pinglun" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="评论管理"
+                android:textColor="@color/navigation_color"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <!--店铺设置-->
+        <LinearLayout
+            android:id="@+id/ll_store_settings"
+            android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/home_ic_dianpu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="店铺设置"
+                android:textColor="@color/navigation_color"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <!--账户安全-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/home_ic_i_zhaq" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="账户安全"
+                android:textColor="@color/navigation_color"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <!--联系平台-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/home_ic_i_lxpt" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="联系平台"
+                android:textColor="@color/navigation_color"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <!--关于平台-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/home_ic_i_gypt" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="关于平台"
+                android:textColor="@color/navigation_color"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+
 
 
     </LinearLayout>
@@ -350,13 +419,13 @@
                                 android:layout_width="12dp"
                                 android:layout_height="12dp"
                                 android:layout_gravity="center_vertical"
-                                android:background="@drawable/home_ic_xc_dfk" />
+                                android:background="@drawable/home_ic_djh" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
-                                android:text="待付款"
+                                android:text="待拣货"
                                 android:textColor="@color/hint_text_color"
                                 android:textSize="12sp" />
 
@@ -399,7 +468,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
-                                android:text="待发货"
+                                android:text="待配货"
                                 android:textColor="@color/hint_text_color"
                                 android:textSize="12sp" />
 
@@ -436,13 +505,13 @@
                                 android:layout_width="12dp"
                                 android:layout_height="12dp"
                                 android:layout_gravity="center_vertical"
-                                android:background="@drawable/home_ic_xc_wqd" />
+                                android:background="@drawable/home_ic_sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
-                                android:text="维权订单"
+                                android:text="商品"
                                 android:textColor="@color/hint_text_color"
                                 android:textSize="12sp" />
 
