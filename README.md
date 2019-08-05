@@ -1,2 +1,2 @@
-# Android-Supplier
-供货商Android客户端
+# Android_MerShop
+Android商户端APP

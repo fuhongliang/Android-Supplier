@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tv_save"
+        android:layout_below="@+id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--活动名称-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_text"
+                    android:text="活动名称" />
+
+                <include layout="@layout/layout_star" />
+
+                <EditText
+                    android:id="@+id/et_name"
+                    style="@style/base_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="最多可输入20个字"
+                    android:maxLines="1"
+                    android:maxLength="20"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!--添加商品-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/tv_text"
+                    android:text="添加商品" />
+
+                <include layout="@layout/layout_star" />
+
+
+            </LinearLayout>
+
+            <!--添加商品-->
+
+            <cn.ifhu.supplier.view.ExpandListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E5E5E5" />
+            <!--添加-->
+            <LinearLayout
+                android:id="@+id/ll_add"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@color/white"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginRight="6dp"
+                    android:background="@drawable/yhq_ic_add" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="添加"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <!--活动状态-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:background="#ffffff">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:text="活动状态"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <Switch
+                    android:id="@+id/swh_status"
+                    android:layout_width="55dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:checked="true"
+                    android:textOff=""
+                    android:textOn=""
+                    android:thumb="@drawable/thumb"
+                    android:track="@drawable/track_selctor" />
+
+            </RelativeLayout>
+
+            <!--活动状态-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:background="#ffffff"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:text="总优惠价格："
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="￥"
+                    android:textColor="#EC1818"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_package_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="#EC1818"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/tv_save"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="17sp" />
+</RelativeLayout>

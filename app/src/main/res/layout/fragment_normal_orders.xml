@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <cn.ifhu.supplier.view.RVPIndicator
+            android:id="@+id/rvp_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:indicator_color="@color/colorPrimaryDark"
+            app:indicator_height="2dp"
+            app:indicator_visible_count="4"
+            app:text_color_normal="#999999"
+            app:text_color_selected="@color/black" />
+
+        <ImageView style="@style/v_line" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

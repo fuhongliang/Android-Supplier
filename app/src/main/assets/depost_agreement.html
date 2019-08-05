@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)file:///Users/mac/Downloads/protocol.html -->
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+body{
+	margin: 0px;
+	padding: 0;
+	border:none;
+}
+p{
+	margin: 0;
+	padding: 0;
+}
+.content{
+	color:#666;
+	background: #fff;
+}
+.content b{
+	color:#333;
+}
+.content p{
+	text-align: justify;
+}
+</style>
+</head>
+<body>
+<div class="content">
+    <p>
+        <b>
+            保证金协议声明
+        </b>
+    </p>
+    <p>
+        为树立甲乙双方经营信誉，共同打造高度诚信的电子商务平台，特制定如下保证金协议，并共同遵守。
+    </p>
+
+    <p>
+        <b>一、保证金用途</b>
+    </p>
+    <p>
+        如果乙方在产品交易过程中出现顾客投诉或赔付时，甲方在核实交易真实情况的前提下，会用乙方所付保证金给予顾客第一时间赔付，乙方保证在24小时内协助甲方解决客户的投诉或赔付问题。
+    </p>
+    <p><b>二、保证金缴纳</b></p>
+    <p>
+        1、为保证平台系统自动结算的一致性，乙方保证金数量按所属行业如数缴纳给甲方，不计算利息。
+    </p>
+    <p>
+        2、甲方收取乙方保证金时，当场开具加盖平台财务专用章的保证金收款凭证，但不能开具正式发票。
+    </p>
+    <p><b>三、保证金补交</b></p>
+    <p>
+        如乙方保证金因销售纠纷而赔偿，造成不足，乙方需在3日内补交，否则，甲方有权中断双方所签协议，直至乙方补齐保证金为止。
+    </p>
+
+    <p><b>四、保证金退还</b></p>
+    <p>
+        1、乙方退出平台经营时，在终止协议、结清往来账务后的7日内，甲方如数退还给乙方。
+    </p>
+    <p>
+        2、甲方超期不退还乙方保证金，按保证金总额的0.3%每日赔偿乙方损失。
+    </p>
+</div>
+<script type="text/javascript">
+	(function(win, lib) {
+	    var doc = win.document;
+	    var docEl = doc.documentElement;
+	    var body = document.body;
+	    var metaEl = doc.querySelector('meta[name="viewport"]');
+	    var flexibleEl = doc.querySelector('meta[name="flexible"]');
+	    var dpr = 0;
+	    var scale = 0;
+	    var tid;
+	    var flexible = lib.flexible || (lib.flexible = {});
+		var clientHeight = window.screen.height;
+		var clientWid = window.screen.width;
+		var p = document.querySelectorAll("p");
+		var b = document.querySelectorAll(".content b");
+		var title = document.querySelector(".title");
+	    if (metaEl) {
+	        console.warn('将根据已有的meta标签来设置缩放比例');
+	        var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+	        if (match) {
+	            scale = parseFloat(match[1]);
+	            dpr = parseInt(1 / scale);
+	        }
+	    } else if (flexibleEl) {
+	        var content = flexibleEl.getAttribute('content');
+	        if (content) {
+	            var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
+	            var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
+	            if (initialDpr) {
+	                dpr = parseFloat(initialDpr[1]);
+	                scale = parseFloat((1 / dpr).toFixed(2));
+	            }
+	            if (maximumDpr) {
+	                dpr = parseFloat(maximumDpr[1]);
+	                scale = parseFloat((1 / dpr).toFixed(2));
+	            }
+	        }
+	    }
+
+	    if (!dpr && !scale) {
+	        var isAndroid = win.navigator.appVersion.match(/android/gi);
+	        var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+	        var devicePixelRatio = win.devicePixelRatio;
+	        if (isIPhone) {
+	            // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+	            if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
+	                dpr = 3;
+					for(var i=0;i<p.length;i++){
+						p[i].style.fontSize = "39px";
+						p[i].style.lineHeight = "78px";
+					}
+					for(var j=0;j<b.length;j++){
+						b[j].style.fontSize = "48px";
+						b[j].style.lineHeight = "126px";
+					}
+					document.querySelector(".content").style.marginLeft = "45px";
+					document.querySelector(".content").style.marginRight = "45px";
+	            } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)){
+	                dpr = 2;
+					for(var i=0;i<p.length;i++){
+						p[i].style.fontSize = "26px";
+						p[i].style.lineHeight = "52px";
+					}
+					for(var j=0;j<b.length;j++){
+						b[j].style.fontSize = "32px";
+						b[j].style.lineHeight = "84px";
+					}
+					document.querySelector(".content").style.marginLeft = "30px";
+					document.querySelector(".content").style.marginRight = "30px";
+	            } else {
+	                dpr = 1;
+					for(var i=0;i<p.length;i++){
+						p[i].style.fontSize = "13px";
+						p[i].style.lineHeight = "26px";
+					}
+					for(var j=0;j<b.length;j++){
+						b[j].style.fontSize = "16px";
+						b[j].style.lineHeight = "42px";
+					}
+					document.querySelector(".content").style.marginLeft = "15px";
+					document.querySelector(".content").style.marginRight = "15px";
+	            }
+	        } else {
+	            // 其他设备下，仍旧使用1倍的方案
+	            dpr = 1;
+				for(var i=0;i<p.length;i++){
+					p[i].style.fontSize = "13px";
+					p[i].style.lineHeight = "26px";
+				}
+				for(var j=0;j<b.length;j++){
+					b[j].style.fontSize = "16px";
+					b[j].style.lineHeight = "42px";
+				}
+				document.querySelector(".content").style.marginLeft = "15px";
+				document.querySelector(".content").style.marginRight = "15px";
+	        }
+	        scale = 1 / dpr;
+	    }
+
+	    docEl.setAttribute('data-dpr', dpr);
+	    if (!metaEl) {
+	        metaEl = doc.createElement('meta');
+	        metaEl.setAttribute('name', 'viewport');
+	        metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+	        if (docEl.firstElementChild) {
+	            docEl.firstElementChild.appendChild(metaEl);
+	        } else {
+	            var wrap = doc.createElement('div');
+	            wrap.appendChild(metaEl);
+	            doc.write(wrap.innerHTML);
+	        }
+	    }
+
+	    function refreshRem(){
+	        var width = docEl.getBoundingClientRect().width;
+			if (width / dpr > 1024) {
+			    width = 1024 * dpr;
+			}
+	        var rem = width / 10;
+	        docEl.style.fontSize = rem + 'px';
+	        flexible.rem = win.rem = rem;
+	    }
+
+	    win.addEventListener('resize', function() {
+	        clearTimeout(tid);
+	        tid = setTimeout(refreshRem, 300);
+	    }, false);
+	    win.addEventListener('pageshow', function(e) {
+	        if (e.persisted) {
+	            clearTimeout(tid);
+	            tid = setTimeout(refreshRem, 300);
+	        }
+	    }, false);
+
+	    if (doc.readyState === 'complete') {
+	        doc.body.style.fontSize = 12 * dpr + 'px';
+	    } else {
+	        doc.addEventListener('DOMContentLoaded', function(e) {
+	            doc.body.style.fontSize = 12 * dpr + 'px';
+	        }, false);
+	    }
+
+
+	    refreshRem();
+
+	    flexible.dpr = win.dpr = dpr;
+	    flexible.refreshRem = refreshRem;
+	    flexible.rem2px = function(d) {
+	        var val = parseFloat(d) * this.rem;
+	        if (typeof d === 'string' && d.match(/rem$/)) {
+	            val += 'px';
+	        }
+	        return val;
+	    }
+	    flexible.px2rem = function(d) {
+	        var val = parseFloat(d) / this.rem;
+	        if (typeof d === 'string' && d.match(/px$/)) {
+	            val += 'rem';
+	        }
+	        return val;
+	    }
+
+	})(window, window['lib'] || (window['lib'] = {}));
+</script>
+</body></html>

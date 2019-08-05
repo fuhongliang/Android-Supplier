@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
+
+    <include layout="@layout/layout_header"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_state"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/yingye_ic_weiyingye" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="89dp"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_store_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="待开始营业"
+                android:textColor="#000000"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tv_store_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="营业时间：09:00 ~ 22:00"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_change_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_button_blue"
+        android:text="停止营业"
+        android:textColor="#ffffff"
+        android:textSize="17sp"
+        android:stateListAnimator="@null"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="26dp"
+        android:gravity="left"
+        android:text="当您希望长时间不再接受订单时，请点击上方按钮停止营业，开启后需要手动恢复"
+        android:textColor="#666666"
+        android:textSize="14sp" />
+</LinearLayout>

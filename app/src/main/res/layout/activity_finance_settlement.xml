@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
+    <!--头部-->
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:padding="15dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="财务结算"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/rule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="规则说明"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/rule"
+                android:background="@drawable/icon_tixian_gz" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <!--金额-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="158dp"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已结算金额 (元)"
+                android:textColor="#D3ECFF"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_settlement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@+id/tv_withdraw"
+                android:layout_width="60dp"
+                android:layout_height="33dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_button_bule_white"
+                android:gravity="center"
+                android:text="提现"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+        </RelativeLayout>
+        <!--通知-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:id="@+id/iv_tongzhi"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/tx_ic_tongzhi" />
+
+            <TextView
+                android:id="@+id/tv_add_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_tongzhi"
+                android:text="12 月 26 日提现 78000.50 已到账"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+        <!--银行卡-->
+        <RelativeLayout
+            android:id="@+id/rl_add_bank"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_bg_bank">
+
+            <TextView
+                android:id="@+id/tv_bank_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_bank_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_bank_type"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="12dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/icon_jinru_an" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+    <!--待结算金额-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="待结算金额(元)"
+            android:textColor="@color/hint_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_not_settlement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="21sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_financial_bill"
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <TextView
+                android:id="@+id/tv_bill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="全部账单"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <ImageView style="@style/im_tongyong_jinru" />
+
+        </RelativeLayout>
+
+        <ImageView style="@style/dividing_line"
+            android:visibility="gone"/>
+
+        <ListView
+            android:id="@+id/lv_finance"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            tools:listitem="@layout/item_finance_bill" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

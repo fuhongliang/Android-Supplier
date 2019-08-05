@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include layout="@layout/layout_header" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:text="快递配送"
+                android:textColor="#000000"
+                android:textSize="17sp" />
+
+            <Switch
+                android:id="@+id/swh_express"
+                android:layout_width="55dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:textOff=""
+                android:textOn=""
+                android:checked="true"
+                android:thumb="@drawable/thumb"
+                android:track="@drawable/track_selctor"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_express_info"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/ll_express"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_text"
+                    android:text="快递公司" />
+
+                <EditText
+                    android:id="@+id/et_express_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="请输入快递公司"
+                    android:gravity="center_vertical|end"
+                    android:textColor="@color/typed_text_color"
+                    android:textSize="17sp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@null"/>
+            </LinearLayout>
+
+            <ImageView style="@style/dividing_line" />
+
+            <LinearLayout
+                android:id="@+id/ll_express_no"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_text"
+                    android:text="快递单号" />
+
+                <EditText
+                    android:id="@+id/et_express_no"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="请输入快递单号"
+                    android:gravity="center_vertical|end"
+                    android:textColor="@color/typed_text_color"
+                    android:textSize="17sp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@null"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_express_remark"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView style="@style/dividing_line" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:paddingTop="15dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:text="商家留言(选填)"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/et_express_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/white"
+                    android:hint="请输入"
+                    android:gravity="start"
+                    android:padding="15dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#ffffff"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:text="无需物流"
+                android:textColor="#000000"
+                android:textSize="17sp" />
+
+            <Switch
+                android:id="@+id/swh_no_express"
+                android:layout_width="55dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:textOff=""
+                android:textOn=""
+                android:checked="false"
+                android:thumb="@drawable/thumb"
+                android:track="@drawable/track_selctor" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_remark"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView style="@style/dividing_line" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingTop="15dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:text="商家留言"
+                android:textColor="#000000"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/et_remark"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/white"
+                android:hint="请输入"
+                android:gravity="start"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_shipping"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="确定"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryDark"/>
+
+</RelativeLayout>

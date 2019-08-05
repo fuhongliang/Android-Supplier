@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nine_image_text_background_color">#4D000000</color>
+    <color name="nine_image_text_color">#FFFFFF</color>
+
+    <color name="colorPrimary">#1C98F6</color>
+    <color name="colorPrimaryDark">#1C98F6</color>
+    <color name="colorAccent">#1C98F6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="line">#EDEDED</color>
+    <color name="selected_color">#1871FA</color>
+    <color name="transparent">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="selected_black">#000000</color>
+    <color name="unselect_grey">#ff666666</color>
+    <color name="category_color">#F5F5F5</color>
+
+    <color name="placeholder">#F4F4F4</color>
+
+    <color name="transparent05">#0B000000</color>
+    <color name="transparent10">#1A000000</color>
+    <color name="transparent20">#33000000</color>
+    <color name="transparent30">#4D000000</color>
+    <color name="transparent40">#66000000</color>
+    <color name="transparent50">#80000000</color>
+    <color name="transparent60">#9A000000</color>
+    <color name="transparent70">#B3000000</color>
+    <color name="transparent80">#CC000000</color>
+    <color name="transparent90">#E5000000</color>
+    <color name="transparent100">#FF000000</color>
+
+    <color name="transparent_white">#00ffffff</color>
+    <color name="transparent10_white">#1Affffff</color>
+    <color name="transparent20_white">#33ffffff</color>
+    <color name="transparent30_white">#4Dffffff</color>
+    <color name="transparent40_white">#66ffffff</color>
+    <color name="transparent50_white">#80ffffff</color>
+    <color name="transparent60_white">#9Affffff</color>
+    <color name="transparent70_white">#B3ffffff</color>
+    <color name="transparent80_white">#CCffffff</color>
+    <color name="transparent90_white">#E5ffffff</color>
+    <color name="transparent100_white">#FFffffff</color>
+    <color name="line_bg">#F5F5F5</color>
+
+    <color name="navigation_selected_color">#1C98F6</color>
+    <color name="navigation_color">#666666</color>
+
+
+    <color name="depost_selected_color">#1D9EFF</color>
+    <color name="depost_color">#0AC782</color>
+
+
+    <color name="typed_text_color">#333333</color>
+    <color name="hint_text_color">#999999</color>
+    <color name="daipeisong_text_color">#EC1818</color>
+    <color name="peisongzhong_text_color">#0AC782</color>
+    <color name="yiquxiao_text_color">#999999</color>
+    <color name="yiwangcheng_text_color">#1C98F6</color>
+
+    <!-- text colors -->
+    <!-- 87% of #000000: text -->
+    <color name="text_primary">#DF000000</color>
+    <!-- 54% of #000000: secondary text / icons -->
+    <color name="text_secondary">#8A000000</color>
+    <!-- 26% of #000000: hint text -->
+    <color name="text_hint">#43000000</color>
+    <!-- 12% of #000000: dividers text -->
+    <color name="divider">#1F000000</color>
+
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_orange">#ED9400</color>
+    <color name="text_gray_light">#707070</color>
+    <color name="text_green">#97C535</color>
+    <color name="text_blue">#329CC8</color>
+    <color name="text_red">#FFFF0000</color>
+    <color name="second_grey">#999999</color>
+
+
+    <color name="full_cut_selected_color">#F77A27</color>
+    <color name="full_cut_unselected_color">#999999</color>
+
+    <color name="voucher_normal_color">#333333</color>
+
+    <color name="order_before_comfirm_color">#1C98F6</color>
+    <color name="order_comfirm_color">#07D781</color>
+    <color name="order_cancel_color">#999999</color>
+    <color name="order_service_color">#FF8A17</color>
+    <color name="order_not_pay_color">#FF4444</color>
+
+</resources>

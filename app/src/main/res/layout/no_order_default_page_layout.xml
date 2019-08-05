@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/rl_empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="125dp"
+            android:layout_height="129dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/image_loding" />
+
+        <TextView
+            android:id="@+id/order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:text="暂无订单"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/order"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:text="想要获取更多的订单，快去看看促销管理吧～"
+            android:textColor="#999999"
+            android:textSize="13sp" />
+    </LinearLayout>
+</FrameLayout>

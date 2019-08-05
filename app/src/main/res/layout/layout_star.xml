@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView style="@style/tv_text"
+    android:textColor="#ec1818"
+    android:text="*"
+    android:layout_marginLeft="0dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

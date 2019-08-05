@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name" translatable="false">小方格供货端</string>
+    <string name="save" translatable="false">保存</string>
+    <string name="phone_tips" translatable="false">请留下联系方式，以方便我们回复您</string>
+
+    <array name="dummy_items">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+        <item>Six</item>
+        <item>Seven</item>
+        <item>Eight</item>
+        <item>Nine</item>
+        <item>Ten</item>
+    </array>
+
+    <string name="shop_reply" translatable="false"><Data><![CDATA[<font color="#1C98F6">商家回复：</font> %s]]></Data></string>
+    <string name="file_provider_authorities" translatable="false">com.yalantis.ucrop.provider</string>
+    <string name="password" translatable="false">密&#160;&#160;&#160;&#160;&#160;码</string>
+    <string name="get_code_again" translatable="false">%d s后重新获取</string>
+
+    <string name="channel_critical" translatable="false">Critical events</string>
+    <string name="channel_importance" translatable="false">Importance events</string>
+    <string name="channel_default" translatable="false">Default events</string>
+    <string name="channel_low" translatable="false">Low events</string>
+    <string name="channel_media" translatable="false">Media events</string>
+
+
+    <string name="action_settings" translatable="false">设置</string>
+    <string name="title_activity_mini_qb" translatable="false">MiniQBActivity</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="tag" translatable="false"> (X5内核功能演示)</string>
+    <string name="tip" translatable="false">普通接入直接参考“APPApplication” “BrowserActivity” “X5WebView”中相关实现即可</string>
+    <string name="apply_tips_going_on" translatable="false">您的入驻申请已提交审核，请等待平台审核\n我们将以短信的方式通知您审核结果</string>
+    <string name="apply_tips_fail" translatable="false">您的入驻申请已失败\n请联系平台管理员 </string>
+    <string name="apply_tips_success" translatable="false">您的入驻申请已通过\n请以短信上通知的方式进行登录</string>
+
+    <string-array name="index_titles">
+        <item>浏览器demo</item>
+        <item>全屏播放</item>
+        <item>文件选择器</item>
+    </string-array>
+    <string name="title_activity_main2">Main2Activity</string>
+</resources>

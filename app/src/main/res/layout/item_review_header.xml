@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--好评度-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="19dp"
+            android:text="好评度：99%"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_blue"
+                android:gravity="center"
+                android:text="全部888"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_evaluation_gray"
+                android:gravity="center"
+                android:text="好评840"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_evaluation_gray"
+                android:gravity="center"
+                android:text="差评1"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_evaluation_gray"
+                android:gravity="center"
+                android:text="中评 0"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_evaluation_gray"
+                android:gravity="center"
+                android:text="差评 0"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_evaluation_gray"
+                android:gravity="center"
+                android:text="有图 0"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <ImageView
+            style="@style/v_line"
+            android:layout_marginTop="15dp"/>
+    </LinearLayout>
+</LinearLayout>

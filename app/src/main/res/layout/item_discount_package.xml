@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:paddingLeft="15dp"
+    android:paddingBottom="15dp"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E5E5E5"
+        />
+    <!--商品图片-->
+    <cn.ifhu.supplier.view.GlideImageView.GlideImageView
+        android:id="@+id/iv_product_image"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="15dp"
+        android:background="@color/unselect_grey" />
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="76dp"
+        android:layout_toRightOf="@+id/iv_product_image"
+        android:orientation="vertical">
+        <!--商品名称-->
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="三文鱼寿司"
+            android:textColor="#ff000000"
+            android:textSize="17sp" />
+        <!--原价:￥189.0-->
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:text="原价:￥189.0"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+        <!--原价、优惠价格-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            >
+
+            <!--优惠价格：-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="15dp"
+                android:text="优惠价格："
+                android:textColor="#333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_discount_package_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_bg_white"
+                android:gravity="center"
+                android:text="100"
+                android:textColor="#EC1818"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:text="元"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:padding="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/xiangqing_ic_shanchu" />
+</RelativeLayout>

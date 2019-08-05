@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/menu_add_cate"
+        android:icon="@drawable/sp_ic_sy_xjfl"
+        android:title="新建分类"
+        app:showAsAction="never"
+        android:showAsAction="always"
+        tools:ignore="AppCompatResource"/>
+
+    <item
+        android:id="@+id/menu_add_goods"
+        android:icon="@drawable/sp_ic_sy_fbsp"
+        android:title="发布商品"
+        app:showAsAction="never"
+        android:showAsAction="always"
+        tools:ignore="AppCompatResource"/>
+    <item
+        android:id="@+id/menu_cate_manage"
+        android:icon="@drawable/sp_ic_sy_glfl"
+        android:title="管理分类"
+        app:showAsAction="never"
+        android:showAsAction="always"
+        tools:ignore="AppCompatResource"
+        />
+</menu>

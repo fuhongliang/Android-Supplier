@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
+
+    <include layout="@layout/layout_header" />
+
+
+    <!--新消息震动-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="新消息震动"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <Switch
+            android:id="@+id/swh_shock"
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true"
+            android:thumb="@drawable/thumb"
+            android:track="@drawable/track_selctor"/>
+
+    </RelativeLayout>
+
+    <!--开启APP时声音调为最大-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffffff"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="开启APP时声音调为最大"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <Switch
+            android:id="@+id/swh_status"
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true"
+            android:thumb="@drawable/thumb"
+            android:track="@drawable/track_selctor" />
+
+    </RelativeLayout>
+    <!--打印机断开声音提醒-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffffff"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="打印机断开声音提醒"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <Switch
+            android:id="@+id/swh_off_tips"
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true"
+            android:thumb="@drawable/thumb"
+            android:track="@drawable/track_selctor" />
+
+    </RelativeLayout>
+</LinearLayout>

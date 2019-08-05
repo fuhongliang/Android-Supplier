@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="15dp">
+    <!--头像和回复-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <cn.ifhu.supplier.view.GlideImageView.GlideImageView
+            android:id="@+id/iv_user_header"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="11dp"
+            android:background="@drawable/moren_yonghu"
+            />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_date"
+            android:layout_toRightOf="@+id/iv_user_header"
+            android:gravity="left"
+            android:text="r****i"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:layout_toRightOf="@+id/iv_user_header"
+            android:gravity="left"
+            android:text="2019-03-08"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_reply"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/bg_button_blue"
+            android:text="回复"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </RelativeLayout>
+    <!--商家星星-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商家"
+            android:layout_marginRight="6dp"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+        <com.idlestar.ratingstar.RatingStarView
+            android:id="@+id/rsv_rating"
+            app:rsv_cornerRadius="2dp"
+            app:rsv_starMargin="3dp"
+            app:rsv_strokeWidth="2px"
+            app:rsv_strokeColor="#457DD7"
+            app:rsv_starForegroundColor="#f77a27"
+            app:rsv_starBackgroundColor="#cccccc"
+            app:rsv_starNum="5"
+            app:rsv_rating="1"
+            app:rsv_onlyHalfStar="true"
+            app:rsv_enableSelectRating="false"
+            app:rsv_starThickness="0.5"
+            app:rsv_drawStrokeForEmptyStar="false"
+            app:rsv_drawStrokeForHalfStar="true"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:background="#fff"
+            android:layout_width="0dp"
+            android:layout_height="14dp"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:id="@+id/tv_kouwei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="口味 5 星"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_baozhuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:text="包装 5 星"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_peisong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:text="配送 5 星"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+    </LinearLayout>
+    <!--评语-->
+    <TextView
+        android:id="@+id/tv_review_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="left"
+        android:lineSpacingExtra="10dp"
+        android:text="苹果非常非常棒！是今年新下来的苹果，是非常正宗的烟台红富士！口感又脆又甜，还有一个最大的优"
+        android:textColor="#333333"
+        android:textSize="15sp" />
+    <!--图片-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="12dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:background="@drawable/photo" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/photo" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/photo" />
+    </LinearLayout>
+    <!--商家回复-->
+
+    <RelativeLayout
+        android:id="@+id/rl_reply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/tv_reply_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_marginTop="10dp"
+            android:lineSpacingExtra="8dp"
+            android:background="@drawable/bg_button_gray"
+            android:text="商家回复：感谢亲的五星好评，我们会继续努力，为大家提供香甜可口的正宗红富士苹果"
+            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="11dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/bnt_huifukuang"/>
+    </RelativeLayout>
+
+</LinearLayout>
+

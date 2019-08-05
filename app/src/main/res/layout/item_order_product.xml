@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <cn.ifhu.supplier.view.GlideImageView.GlideImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="61dp"
+        android:layout_height="61dp"
+        android:src="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/iv_photo"
+        android:text="商品名称商品名称商品名称"
+        android:textColor="@color/typed_text_color"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_specification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_product_name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@id/iv_photo"
+        android:text="规格：默认"
+        android:textColor="@color/hint_text_color"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_specification"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@id/iv_photo">
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="￥588.00"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_price"
+            android:gravity="right"
+            android:text="x1"
+            android:textColor="@color/hint_text_color"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

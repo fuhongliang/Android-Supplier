@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_round_corner_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/dialog_title_TextStyle"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="6dp"
+        android:text="修改价格"
+        android:textColor="#333333" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品价格："
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="94dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_button_grey"
+                android:gravity="center_vertical"
+                android:textColor="#333333"
+                android:paddingLeft="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:gravity="center"
+                android:textColor="#ff333333"
+                android:layout_marginLeft="10dp"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="折扣价格："
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/dialog_edit"
+                android:layout_width="94dp"
+                android:layout_height="40dp"
+                style="@style/base_edit"
+                android:background="@drawable/bg_bg_white"
+                android:hint="请输入"
+                android:padding="8dp"
+                android:gravity="center_vertical"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="元"
+                android:textColor="#ff333333"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_marginTop="15dp"
+        android:background="#D2D3D5" />
+
+    <TextView
+        android:id="@+id/ok"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="确定"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimaryDark" />
+
+</LinearLayout>

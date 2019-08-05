@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/category_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请转账至一下账号"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="开户名：肖洪琛"
+            android:textColor="#808080"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="开户银行：中国银行"
+            android:textColor="#808080"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="银行卡号：6217 85700 0081358 036"
+            android:textColor="#808080"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="11dp"
+            android:text="请选择上传保证金转账凭证"
+            android:textColor="#010101"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_choose"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/bg_evaluation_gray"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:background="@drawable/bzj_ic_add" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="上传图片"
+                android:textColor="@color/hint_text_color"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
+        <cn.ifhu.supplier.view.GlideImageView.GlideImageView
+            android:id="@+id/iv_depost_pic"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:text="保证金金额"
+            android:textColor="#010101"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_depost"
+            style="@style/base_edit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="end|center_vertical"
+            android:layout_marginEnd="15dp"
+            android:textSize="15sp"
+            android:inputType="numberDecimal"
+            android:background="@null"
+            android:hint="请输入保证金金额" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_login_selector"
+        android:gravity="center"
+        android:stateListAnimator="@null"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="17sp" />
+</LinearLayout>

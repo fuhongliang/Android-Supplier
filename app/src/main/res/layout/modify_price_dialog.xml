@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_round_corner_bg"
+    android:gravity="center_horizontal"
+
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:padding="10dp"
+        android:layout_gravity="end"
+        android:src="@mipmap/ic_delete"/>
+    
+    <TextView
+        android:id="@+id/title"
+        style="@style/dialog_title_TextStyle"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="6dp"
+        android:textSize="18sp"
+        android:text="修改价格"
+        android:textColor="#333333" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:gravity="start"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#808080"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:text="修改订单中所有商品的总价格"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品价格："
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_goods_price"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_button_grey"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:textColor="#333333"
+                android:paddingLeft="10dp"
+                android:hint="填写增加或减少的价格"
+                android:inputType="numberDecimal"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:gravity="start"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#808080"
+            android:layout_marginTop="20dp"
+            android:text="修改的是订单中运费的价格"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="运费价格："
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_shipping_fee"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                style="@style/base_edit"
+                android:background="@drawable/bg_bg_white"
+                android:hint="填写增加或减少的价格"
+                android:padding="8dp"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:inputType="numberDecimal"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:gravity="start"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#FF4444"
+            android:layout_marginTop="15dp"
+            android:text="优惠的运费不能超过原来的运费"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_marginTop="15dp"
+        android:background="#D2D3D5" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="加价"
+            android:textSize="18dp"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#D2D3D5" />
+        <TextView
+            android:id="@+id/tv_discount"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="优惠"
+            android:textSize="18dp"
+            android:textColor="#07D781" />
+    </LinearLayout>
+
+</LinearLayout>

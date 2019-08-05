@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/add_note_bg"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/edit_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="64dp"
+        android:background="@null"
+        android:gravity="top"
+        android:hint="回复评论"
+        android:padding="16dp"
+        style="@style/base_edit"
+        android:textSize="16dp"
+        android:maxHeight="200dp"
+        android:textColorHint="#FF9B9B9B"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="60dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="16dp"
+            android:text="取消"
+            android:textSize="18dp"
+            android:textColor="#FF1871FA"
+            />
+
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="74dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:background="@drawable/bg_button_blue"
+            android:text="回复"
+            android:textColor="#FFFFFFFF" />
+    </RelativeLayout>
+</LinearLayout>

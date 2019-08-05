@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.baba.GlideImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/iv_photo"
+    android:layout_width="54dp"
+    android:layout_height="54dp"
+    android:layout_marginLeft="10dp"
+    android:background="@color/wheel_title_bar_title_color"></com.baba.GlideImageView>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog_view"
+    android:layout_width="72dp"
+    android:layout_height="72dp"
+    android:background="@drawable/loading_bg">
+
+    <com.github.rahatarmanahmed.cpv.CircularProgressView
+        android:id="@+id/progress_view"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="15dp"
+        app:cpv_animAutostart="false"
+        app:cpv_indeterminate="true"
+        app:cpv_color="@color/colorPrimaryDark"
+        app:cpv_thickness="1.5dp" />
+
+</RelativeLayout>

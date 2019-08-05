@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/category_color"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/bg_radius"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.baba.GlideImageView
+                android:id="@+id/iv_state"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/yhq_bnt_xszk_tc01" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="海鲜寿司单品优惠套餐"
+                    android:textColor="#010101"
+                    android:textSize="17sp" />
+
+
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总优惠价格：￥150.00"
+                    android:textColor="#999999"
+                    android:gravity="bottom"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_state_right"
+                android:layout_width="52dp"
+                android:layout_height="45dp"
+                android:layout_gravity="end"
+                android:background="@drawable/yhq_bnt_ysx" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="4dp"
+                android:layout_height="8dp"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/bnt_icon_zuo_yuan" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/bg_button_virtual"
+                android:layerType="software"/>
+
+            <ImageView
+                android:layout_width="4dp"
+                android:layout_height="8dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/bnt_icon_yuo_yuan" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:id="@+id/ll_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@id/ll_delete"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/yhq_bnt_guanli" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="25dp"
+                    android:text="管理"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/yhq_bnt_shanchu" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="15dp"
+                    android:text="删除"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--&gt;-->
+            <!--<ImageView-->
+                <!--android:id="@+id/bianji"-->
+                <!--android:layout_width="15dp"-->
+                <!--android:layout_height="15dp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_toLeftOf="@id/tv_edit"-->
+                <!--android:background="@drawable/yhq_bnt_guanli" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_edit"-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginRight="15dp"-->
+                <!--android:layout_toLeftOf="@id/iv_shanshu"-->
+                <!--android:text="管理"-->
+                <!--android:gravity="center"-->
+                <!--android:textColor="#333333"-->
+                <!--android:textSize="14sp" />-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_shanshu"-->
+                <!--android:layout_width="15dp"-->
+                <!--android:layout_height="15dp"-->
+                <!--android:layout_toLeftOf="@+id/tv_delete"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:background="@drawable/yhq_bnt_shanchu" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_delete"-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="删除"-->
+                <!--android:textColor="#333333"-->
+                <!--android:textSize="14sp" />-->
+
+        <!--</RelativeLayout>-->
+
+    </LinearLayout>
+</LinearLayout>

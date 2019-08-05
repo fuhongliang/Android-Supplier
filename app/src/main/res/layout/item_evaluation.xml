@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="15dp">
+
+        <cn.ifhu.supplier.view.GlideImageView.GlideImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+             />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:text="ssdfj"
+            android:textColor="@color/typed_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/addtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:text="2019-03-09"
+            android:textColor="@color/hint_text_color"
+            android:textSize="11sp" />
+
+        <ImageView
+            android:id="@+id/iv_score"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@id/tv_good_review"
+            />
+
+        <TextView
+            android:id="@+id/tv_good_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text=""
+            android:textColor="@color/typed_text_color"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:textColor="#003333"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_pic_list"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="11dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/line_fff"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        />
+
+        <TextView
+            android:id="@+id/tv_reply_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="商家回复：\n感谢您对我们的支持与厚爱，您的满意就是我们最大的动力，谢谢您对我们的肯定。我们会继续努力的。"
+            android:textColor="#FF4444"
+            android:textSize="12sp" />
+
+    <TextView style="@style/line_fff"
+        android:id="@+id/tv_line"
+        android:layout_marginTop="12dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginRight="15dp"
+        android:gravity="end|center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_btn_delete"
+            android:layout_width="60dp"
+            android:layout_height="27dp"
+            android:text="删除"
+            android:textColor="@color/hint_text_color"
+            android:layout_marginRight="15dp"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:background="@drawable/bg_evaluation_white"/>
+        <TextView
+            android:id="@+id/tv_btn_hide"
+            android:layout_width="60dp"
+            android:layout_height="27dp"
+            android:text="隐藏"
+            android:textColor="@color/hint_text_color"
+            android:layout_marginRight="15dp"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:background="@drawable/bg_evaluation_white"/>
+        <TextView
+            android:id="@+id/tv_btn_reply"
+            android:layout_width="60dp"
+            android:layout_height="27dp"
+            android:text="回复"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:background="@drawable/bg_btn_blue"/>
+
+    </LinearLayout>
+</LinearLayout>

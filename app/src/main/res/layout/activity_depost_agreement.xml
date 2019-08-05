@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
+
+    <include layout="@layout/layout_header"
+        android:id="@+id/header"/>
+    <ProgressBar
+        android:id="@+id/progress_web"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/header"
+        android:progressDrawable="@drawable/progress_style"
+        android:visibility="invisible" />
+    <ScrollView
+        android:layout_below="@+id/progress_web"
+        android:layout_above="@+id/ll_agreement"
+        android:scrollbars="none"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <WebView
+            android:id="@+id/wv_agreement"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_agreement"
+        android:layout_above="@+id/tv_agree"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/iv_agree"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="9dp"
+            android:src="@drawable/bg_agree_selector"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我已阅读并同意"
+            android:layout_marginLeft="7dp"
+            android:textSize="12sp"
+            android:textColor="#333333"
+            />
+        <TextView
+            android:id="@+id/tv_protocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="《一美一物保证金协议》"
+            android:textSize="12sp"
+            android:textColor="#24A1FF"
+            />
+    </LinearLayout>
+
+
+<TextView
+    android:id="@+id/tv_agree"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:layout_margin="15dp"
+    android:text="我同意"
+    android:gravity="center"
+    android:textColor="@color/white"
+    android:textSize="17sp"
+    android:background="@drawable/bg_login_selector"
+    android:layout_alignParentBottom="true"/>
+</RelativeLayout>

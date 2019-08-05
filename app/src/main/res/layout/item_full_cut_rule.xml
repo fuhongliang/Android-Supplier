@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:text="满"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:minWidth="50dp"
+        android:layout_marginLeft="7dp"
+        android:gravity="center"
+        android:background="@null"
+        android:text="100"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="17sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginLeft="7dp"
+        android:gravity="center_vertical"
+        android:text="元，"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:text="减"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_discount"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:layout_marginLeft="7dp"
+        android:background="@null"
+        android:minWidth="50dp"
+        android:text="20"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="17sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginLeft="7dp"
+        android:gravity="center_vertical"
+        android:text="元"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_delete"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/xiangqing_ic_shanchu" />
+    </RelativeLayout>
+
+</LinearLayout>

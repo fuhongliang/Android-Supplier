@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="cn.ifhu.supplier">
+
+    <uses-permission android:name="android.permission.CAMERA"/> <!-- 允许程序连接到已配对的蓝牙设备 -->
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> <!-- 用于获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/> <!-- 用于访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET"/> <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/> <!-- 用于写入缓存数据到扩展存储卡 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!-- 用于申请调用A-GPS模块 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/> <!-- 用于申请获取蓝牙信息进行室内定位 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <!-- Required -->
+    <permission
+        android:name="cn.ifhu.supplier.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <!-- Required -->
+    <uses-permission android:name="cn.ifhu.supplier.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <application
+        android:name="cn.ifhu.supplier.MyApplication"
+        android:allowBackup="true"
+        android:icon="${app_icon}"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="${app_icon}"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="cn.ifhu.supplier.activity.LaunchActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+
+        </activity>
+        <activity android:name="cn.ifhu.supplier.activity.operation.ProductManageActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.MainActivity"
+            android:theme="@style/AppTheme_listDivider"/>
+        <activity android:name="cn.ifhu.supplier.activity.me.RingSettingsActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.operation.AddProductActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.operation.EditProductActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.ManageCategoryActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.SortCategoryActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.login.LoginActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name="cn.ifhu.supplier.activity.TestActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.me.StoreSetUpActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name="cn.ifhu.supplier.activity.me.AboutUsActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.me.AccountAndSafeActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.me.FeedBackActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.me.ChangePassWordActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.me.StoreStateActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.me.ModifyStoreNamePhoneActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.me.BusinessQualificationActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.me.StoreNoticeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.operation.ReviewListActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.operation.AddOrEditCategoryActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.operation.SellingTimeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.WebViewActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.me.SearchBluetoothActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <service android:name="cn.ifhu.supplier.BtService"/> <!-- 剪切页面 -->
+        <activity android:name="com.yalantis.ucrop.UCropActivity"/>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="cn.ifhu.supplier.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+        <activity android:name="cn.ifhu.supplier.activity.operation.DiscountListActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.operation.AddLimitDiscountsActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.FullCutListActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.VouCherListActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.AddVouCherActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.operation.AddFullReductionActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.DiscountPackageListActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.DiscountAddProductActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.operation.AddDiscountPackageActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name="cn.ifhu.supplier.activity.me.PrintingSettingsActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.ReleaseBankActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.AccoutInformationActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.operation.FinanceActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.ManageBankActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.AddBankActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.notice.NoticeListActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.financial.BillsListActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.BindingSuccessActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.WithdrawActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.WithdrawSuccessActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.NoticeDetailActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.AddAddressActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.GaodeMapActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.operation.AddProductOneActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.FilechooserActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+
+        <receiver
+            android:name="com.umeng.message.NotificationProxyBroadcastReceiver"
+            android:exported="false"/>
+
+        <service android:name="com.umeng.message.UmengIntentService"/> <!-- 自定义消息接收service -->
+        <service
+            android:name="cn.ifhu.supplier.utils.service.MyPushIntentService"
+            android:enabled="true"/>
+        <service android:name="com.umeng.message.UmengDownloadResourceService"/> <!-- startReceiver 用来设置开机启动 消息推送的接收service -->
+        <receiver
+            android:name="cn.ifhu.supplier.utils.service.StartReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.amap.api.location.APSService"/>
+        <service
+            android:name="cn.ifhu.supplier.utils.notificaitons.NotificationService"
+            android:exported="false"/>
+
+        <!-- Since JCore2.0.0 Required SDK核心功能-->
+        <!-- 可配置android:process参数将Service放在其他进程中；android:enabled属性不能是false -->
+        <!-- 这个是自定义Service，要继承极光JCommonService，可以在更多手机平台上使得推送通道保持的更稳定 -->
+        <service android:name="cn.ifhu.supplier.jpush.PushService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action" />
+            </intent-filter>
+        </service>
+
+
+        <!-- Required since 3.0.7 -->
+        <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->
+        <!-- 3.3.0开始所有事件将通过该类回调 -->
+        <!-- 该广播需要继承 JPush 提供的 JPushMessageReceiver 类, 并如下新增一个 Intent-Filter -->
+        <receiver
+            android:name="cn.ifhu.supplier.jpush.NotificationReceiver"
+            android:enabled="true"
+            android:exported="false"
+            tools:node="replace">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                <category android:name="cn.ifhu.supplier" />
+            </intent-filter>
+        </receiver>
+        <!-- Required SDK核心功能-->
+        <!--<activity-->
+            <!--android:name="cn.jpush.android.ui.PushActivity"-->
+            <!--android:configChanges="orientation|keyboardHidden"-->
+            <!--android:theme="@android:style/Theme.NoTitleBar"-->
+            <!--android:exported="false">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="cn.jpush.android.ui.PushActivity" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="cn.ifhu.supplier" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="744d60e5b4545cb59396af57ed410640"/>
+
+        <activity android:name="cn.ifhu.supplier.activity.orders.ShippingActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.orders.OrderDetailActivity"/>
+        <activity
+            android:name="cn.ifhu.supplier.activity.join.JoinInActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name="cn.ifhu.supplier.activity.join.ReviewActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.join.DepositAgreementActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.join.DepositPostActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.join.MyDepositActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.HomeActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.operation.GoodsDescriptionActivity">
+        </activity>
+        <activity android:name="cn.ifhu.supplier.activity.home.EvaluationActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.home.FinanceSettlementActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.home.WeChatWithdrawActivity"/>
+        <activity android:name="cn.ifhu.supplier.activity.home.BankWithdrawActivity"/>
+    </application>
+
+</manifest>

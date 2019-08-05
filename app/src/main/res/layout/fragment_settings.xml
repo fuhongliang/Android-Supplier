@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/category_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:background="@drawable/sz_bnt">
+
+        <cn.ifhu.supplier.view.GlideImageView.GlideImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/user_header_bg"
+            android:layout_marginTop="34dp"/>
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_avatar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:text="箭牌卫浴旗舰店"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_store_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:text="新安三路28号海关大厦16楼1610"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/bg_setting_white_bg"
+        android:orientation="vertical">
+        <!--店铺设置-->
+        <RelativeLayout
+            android:id="@+id/rl_store_setting"
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <ImageView
+                android:id="@+id/iv_store_setting"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sz_bnt_ic_dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_store_setting"
+                android:text="店铺设置"
+                android:textColor="@color/typed_text_color"
+                android:textSize="15sp" />
+
+            <ImageView style="@style/im_tongyong_jinru" />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/line_fff"
+            android:layout_marginLeft="43dp" />
+        <!--账户与安全-->
+        <RelativeLayout
+            android:id="@+id/rl_account_security"
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <ImageView
+                android:id="@+id/iv_account_security"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sz_bnt_ic_zh" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_account_security"
+                android:text="账户与安全"
+                android:textColor="@color/typed_text_color"
+                android:textSize="15sp" />
+
+            <ImageView style="@style/im_tongyong_jinru" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_setting_white_bg"
+        android:orientation="vertical">
+        <!--联系平台-->
+        <RelativeLayout
+            android:id="@+id/rl_contact_platform"
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <ImageView
+                android:id="@+id/iv_contact_platform"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sz_bnt_ic_lx" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_contact_platform"
+                android:text="联系平台"
+                android:textColor="@color/typed_text_color"
+                android:textSize="15sp" />
+
+            <ImageView style="@style/im_tongyong_jinru" />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/line_fff"
+            android:layout_marginLeft="43dp" />
+        <!--关于平台-->
+        <RelativeLayout
+            android:id="@+id/rl_about_platform"
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <ImageView
+                android:id="@+id/iv_about_platform"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sz_bnt_ic_gy" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_about_platform"
+                android:text="关于平台"
+                android:textColor="@color/typed_text_color"
+                android:textSize="15sp" />
+
+            <ImageView style="@style/im_tongyong_jinru" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

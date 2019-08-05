@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingTop="15dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp">
+
+        <TextView
+            android:id="@+id/tv_notice_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新订单"
+            android:layout_toLeftOf="@+id/tv_notice_time"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_notice_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2019.09.10"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_notice_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="您有新的订单，请注意查收"
+        android:textColor="@color/hint_text_color"
+        android:textSize="14sp"
+        />
+
+    <ImageView style="@style/v_line" />
+</LinearLayout>
+

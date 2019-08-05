@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_header" />
+        <!--代金券名称-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv_text"
+                android:text="代金券名称" />
+
+            <include layout="@layout/layout_star" />
+
+            <EditText
+                android:id="@+id/et_voucher_name"
+                style="@style/base_edit"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="最多可输入20个字"
+                android:maxLines="1"
+                android:maxLength="20"
+                android:singleLine="true"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <!--劵的面值-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_text"
+                    android:text="劵的面值" />
+
+                <include layout="@layout/layout_star" />
+
+                <TextView
+                    android:id="@+id/tv_value"
+                    style="@style/base_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <ImageView style="@style/im_tongyong_jinru" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:background="#E5E5E5" />
+            <!--使用条件-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_text"
+                    android:text="使用条件" />
+
+                <include layout="@layout/layout_star" />
+
+                <EditText
+                    android:id="@+id/et_price"
+                    style="@style/base_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="用劵最低订单金额"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:maxLength="6"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center_vertical"
+                    android:text="元"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:background="#E5E5E5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <!--有效期-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_text"
+                    android:text="有效期" />
+
+                <include layout="@layout/layout_star" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    style="@style/base_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <ImageView style="@style/im_tongyong_jinru" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <!--发放张数-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_text"
+                    android:text="发放张数" />
+
+                <include layout="@layout/layout_star" />
+
+                <EditText
+                    android:id="@+id/et_number"
+                    style="@style/base_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:background="#E5E5E5" />
+            <!--每人限领-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/tv_text"
+                    android:text="每人限领" />
+
+                <include layout="@layout/layout_star" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:gravity="end|center_vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_less"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:padding="10dp"
+                        android:src="@drawable/yhq_ic_jian" />
+
+                    <TextView
+                        android:id="@+id/tv_limit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="1" />
+
+                    <ImageView
+                        android:id="@+id/iv_more"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:padding="10dp"
+                        android:src="@drawable/yhq_ic_jia" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <!--代金券描述-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:minHeight="90dp">
+
+                <TextView
+
+                    style="@style/tv_text"
+                    android:layout_marginTop="12dp"
+                    android:text="代金券描述" />
+
+                <EditText
+                    android:id="@+id/et_description"
+                    style="@style/base_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@null"
+                    android:hint="请输入"
+                    android:textSize="15sp"
+
+
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:stateListAnimator="@null"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="17sp" />
+
+</RelativeLayout>
