@@ -505,6 +505,7 @@
                                 android:layout_width="12dp"
                                 android:layout_height="12dp"
                                 android:layout_gravity="center_vertical"
+                                android:background="@drawable/home_ic_sp"
                                 />
 
                             <TextView
