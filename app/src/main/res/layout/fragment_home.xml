@@ -202,7 +202,7 @@
                 android:textColor="@color/navigation_color"
                 android:textSize="12sp" />
         </LinearLayout>
-        <!--关于平台-->
+        <!--我的团长-->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -219,15 +219,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="关于平台"
+                android:text="我的团长"
                 android:textColor="@color/navigation_color"
                 android:textSize="12sp" />
         </LinearLayout>
-
-
-
-
-
     </LinearLayout>
 
     <ScrollView
