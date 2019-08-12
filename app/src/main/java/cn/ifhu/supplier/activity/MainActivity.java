@@ -25,6 +25,7 @@ import cn.ifhu.supplier.adapter.FragmentAdapter;
 import cn.ifhu.supplier.base.BaseActivity;
 import cn.ifhu.supplier.base.BaseFragment;
 import cn.ifhu.supplier.base.ViewManager;
+import cn.ifhu.supplier.fragments.distribution.DistributionFragment;
 import cn.ifhu.supplier.fragments.goods.GoodsFragment;
 import cn.ifhu.supplier.fragments.home.HomeFragment;
 import cn.ifhu.supplier.fragments.orders.OrdersFragment;
@@ -118,7 +119,7 @@ public class MainActivity extends BaseActivity {
 
     private void initViewPager() {
         ViewManager.getInstance().addFragment(0, HomeFragment.newInstance());
-        ViewManager.getInstance().addFragment(1, OrdersFragment.newInstance());
+        ViewManager.getInstance().addFragment(1, DistributionFragment.newInstance());
         ViewManager.getInstance().addFragment(2, GoodsFragment.newInstance());
 //        ViewManager.getInstance().addFragment(3, SettingsFragment.newInstance());
         mFragments = ViewManager.getInstance().getAllFragment();

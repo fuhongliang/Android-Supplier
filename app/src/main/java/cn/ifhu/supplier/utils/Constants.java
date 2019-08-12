@@ -57,5 +57,6 @@ public class Constants {
 
     public static final String SYSTEMCLASSLIST = "SYSTEMCLASSLIST";
     public static final String GOODSDECR = "GOODSDECR";
+    public static final String PICKDATABEAN = "PickListDataBean";
 
 }

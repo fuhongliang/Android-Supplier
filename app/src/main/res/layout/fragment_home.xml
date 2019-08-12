@@ -223,6 +223,7 @@
                 android:textColor="@color/navigation_color"
                 android:textSize="12sp" />
         </LinearLayout>
+
     </LinearLayout>
 
     <ScrollView

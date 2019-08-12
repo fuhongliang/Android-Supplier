@@ -24,11 +24,11 @@ public class RetrofitAPIManager {
     private static Retrofit retrofit;
 
     //正式环境
-    private static String RELEASE_URL = "https://jiajuapi.ifhu.cn/";
+    private static String RELEASE_URL = "https://shequapi.ifhu.cn/mch/";
 
-    public static String DEV_URL = "https://testjiajuapi.ifhu.cn/";
+    public static String DEV_URL = "https://testshequapi.ifhu.cn/mch/";
 
-    private static String TEST_URL = "https://testjiajuapi.ifhu.cn";
+    private static String TEST_URL = "https://testshequapi.ifhu.cn/mch/";
 
     private static final String STRING_API_ENV = BuildConfig.STRING_API_ENV;
 

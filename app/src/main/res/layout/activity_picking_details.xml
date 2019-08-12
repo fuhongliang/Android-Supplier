@@ -4,10 +4,15 @@
     android:layout_height="match_parent"
     android:background="@color/category_color">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_header" />
+
     <LinearLayout
         android:id="@+id/ll_shipment_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/header"
         android:layout_margin="15dp"
         android:background="@drawable/bg_new_order_white"
         android:orientation="vertical"
@@ -29,6 +34,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_order_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -70,6 +76,7 @@
                 android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/tv_customer_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_customer_name"
@@ -112,6 +119,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_order_sn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -137,6 +145,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_create_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -162,6 +171,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_goods_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -187,6 +197,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_goods_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -212,6 +223,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_total_pay_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -244,9 +256,13 @@
 
         <TextView style="@style/line_fff" />
 
-        <LinearLayout
+        <cn.ifhu.supplier.view.ExpandListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            />
     </LinearLayout>
 
     <TextView
