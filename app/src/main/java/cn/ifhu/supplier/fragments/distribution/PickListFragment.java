@@ -1,6 +1,5 @@
 package cn.ifhu.supplier.fragments.distribution;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,7 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.ifhu.supplier.R;
-import cn.ifhu.supplier.activity.home.PickingDetailsActivity;
 import cn.ifhu.supplier.adapter.PickListAdapter;
 import cn.ifhu.supplier.base.BaseFragment;
 import cn.ifhu.supplier.model.bean.BaseEntity;
@@ -33,9 +31,11 @@ import cn.ifhu.supplier.net.BaseObserver;
 import cn.ifhu.supplier.net.DistributionService;
 import cn.ifhu.supplier.net.RetrofitAPIManager;
 import cn.ifhu.supplier.net.SchedulerUtils;
-import cn.ifhu.supplier.utils.Constants;
 import cn.ifhu.supplier.utils.ToastHelper;
 
+/**
+ * 拣货单列表
+ */
 public class PickListFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.recycler_list)

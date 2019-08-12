@@ -42,6 +42,7 @@ import cn.ifhu.supplier.view.GlideImageView.GlideImageView;
 import static cn.ifhu.supplier.utils.Base64Utils.encode;
 
 /**
+ * 店铺设置
  * @author fuhongliang
  */
 public class StoreSetUpActivity extends BaseActivity {

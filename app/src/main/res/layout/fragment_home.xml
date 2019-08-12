@@ -91,77 +91,78 @@
                 android:textColor="@color/navigation_color"
                 android:textSize="12sp" />
         </LinearLayout>
-        <!--消息管理-->
-        <LinearLayout
-            android:id="@+id/ll_notice"
-            android:layout_width="0dp"
-            android:visibility="gone"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+        <!--&lt;!&ndash;消息管理&ndash;&gt;-->
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ll_notice"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:background="@drawable/home_ic_xiaoxi" />
+            <!--<ImageView-->
+                <!--android:layout_width="22dp"-->
+                <!--android:layout_height="22dp"-->
+                <!--android:background="@drawable/home_ic_xiaoxi" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="消息管理"
-                android:textColor="@color/navigation_color"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <!--评论管理-->
-        <LinearLayout
-            android:id="@+id/ll_reviews"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:text="消息管理"-->
+                <!--android:textColor="@color/navigation_color"-->
+                <!--android:textSize="12sp" />-->
+        <!--</LinearLayout>-->
+        <!--&lt;!&ndash;评论管理&ndash;&gt;-->
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ll_reviews"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:background="@drawable/home_ic_pinglun" />
+            <!--<ImageView-->
+                <!--android:layout_width="22dp"-->
+                <!--android:layout_height="22dp"-->
+                <!--android:background="@drawable/home_ic_pinglun" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="评论管理"
-                android:textColor="@color/navigation_color"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <!--店铺设置-->
-        <LinearLayout
-            android:id="@+id/ll_store_settings"
-            android:layout_width="0dp"
-            android:visibility="gone"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:text="评论管理"-->
+                <!--android:textColor="@color/navigation_color"-->
+                <!--android:textSize="12sp" />-->
+        <!--</LinearLayout>-->
+        <!--&lt;!&ndash;店铺设置&ndash;&gt;-->
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ll_store_settings"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:background="@drawable/home_ic_dianpu" />
+            <!--<ImageView-->
+                <!--android:layout_width="22dp"-->
+                <!--android:layout_height="22dp"-->
+                <!--android:background="@drawable/home_ic_dianpu" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="店铺设置"
-                android:textColor="@color/navigation_color"
-                android:textSize="12sp" />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:text="店铺设置"-->
+                <!--android:textColor="@color/navigation_color"-->
+                <!--android:textSize="12sp" />-->
+        <!--</LinearLayout>-->
         <!--账户安全-->
         <LinearLayout
+            android:id="@+id/ll_account_security"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -183,6 +184,7 @@
         </LinearLayout>
         <!--联系平台-->
         <LinearLayout
+            android:id="@+id/ll_contact_platform"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -204,6 +206,7 @@
         </LinearLayout>
         <!--我的团长-->
         <LinearLayout
+            android:id="@+id/ll_my_share"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

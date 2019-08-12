@@ -48,6 +48,7 @@
         <TextView style="@style/line_fff" />
         <!--联系团长-->
         <RelativeLayout
+            android:id="@+id/rl_customer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"

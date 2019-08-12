@@ -1,10 +1,11 @@
-package cn.ifhu.supplier.activity.home;
+package cn.ifhu.supplier.activity.distribution;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -15,6 +16,9 @@ import cn.ifhu.supplier.adapter.PickingDetailsAdapter;
 import cn.ifhu.supplier.base.BaseActivity;
 import cn.ifhu.supplier.view.ExpandListView;
 
+/**
+ * 商品拣货单详情页面
+ */
 public class PickingDetailsActivity extends BaseActivity {
 
     @BindView(R.id.iv_back)
@@ -49,10 +53,12 @@ public class PickingDetailsActivity extends BaseActivity {
     LinearLayout llShipmentDetails;
     @BindView(R.id.tv_save)
     TextView tvSave;
-
+    @BindView(R.id.rl_customer)
+    RelativeLayout rlCustomer;
     @BindView(R.id.listView)
     ExpandListView listView;
     PickingDetailsAdapter newpickingDetailsAdapter;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

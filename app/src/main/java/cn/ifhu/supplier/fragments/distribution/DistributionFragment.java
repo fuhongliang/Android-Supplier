@@ -56,7 +56,7 @@ public class DistributionFragment extends BaseFragment {
         ivBack.setVisibility(View.GONE);
         tvTitle.setText("配货清单");
         mFragmentArrayList.add(PickListFragment.newInstance());
-        mFragmentArrayList.add(PickListFragment.newInstance());
+        mFragmentArrayList.add(DistributionOrderFragment.newInstance());
         return view;
     }
 

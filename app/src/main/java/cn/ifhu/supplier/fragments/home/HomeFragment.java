@@ -41,6 +41,8 @@ import cn.ifhu.supplier.activity.home.EvaluationActivity;
 import cn.ifhu.supplier.activity.home.FinanceSettlementActivity;
 import cn.ifhu.supplier.activity.join.DepositAgreementActivity;
 import cn.ifhu.supplier.activity.join.MyDepositActivity;
+import cn.ifhu.supplier.activity.me.AboutUsActivity;
+import cn.ifhu.supplier.activity.me.AccountAndSafeActivity;
 import cn.ifhu.supplier.activity.me.StoreSetUpActivity;
 import cn.ifhu.supplier.activity.notice.NoticeListActivity;
 import cn.ifhu.supplier.base.BaseFragment;
@@ -71,12 +73,12 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.tv_store_name)
     TextView mTvStoreName;
     Unbinder unbinder;
-    @BindView(R.id.ll_notice)
-    LinearLayout mLlNotice;
-    @BindView(R.id.ll_reviews)
-    LinearLayout mLlReviews;
-    @BindView(R.id.ll_store_settings)
-    LinearLayout mLlStoreSettings;
+//    @BindView(R.id.ll_notice)
+//    LinearLayout mLlNotice;
+//    @BindView(R.id.ll_reviews)
+//    LinearLayout mLlReviews;
+//    @BindView(R.id.ll_store_settings)
+//    LinearLayout mLlStoreSettings;
     @BindView(R.id.ll_finance)
     LinearLayout mLlFinance;
     @BindView(R.id.ll_depost)
@@ -251,7 +253,7 @@ public class HomeFragment extends BaseFragment {
             }
             if (stringList != null) {
                 for (int i = 0; i < stringList.size(); i++) {
-                    values1.add(new Entry(i, Float.parseFloat(stringList.get(i).replaceAll(",",""))));
+                    values1.add(new Entry(i, Float.parseFloat(stringList.get(i).replaceAll(",", ""))));
                 }
             }
         } catch (Exception e) {
@@ -333,30 +335,30 @@ public class HomeFragment extends BaseFragment {
     }
 
     public void showSellStatistics() {
-        try{
+        try {
             switch (sellIndex) {
                 case 1:
-                    mTvSalesOrders.setText(mHomeDataBean.getStore().getSell_statistics_today().getOrder_num()+"");
+                    mTvSalesOrders.setText(mHomeDataBean.getStore().getSell_statistics_today().getOrder_num() + "");
                     mTvSalesMoney.setText(mHomeDataBean.getStore().getSell_statistics_today().getOrder_price());
                     break;
                 case 2:
-                    mTvSalesOrders.setText(mHomeDataBean.getStore().getSell_statistics_yesterday().getOrder_num()+"");
+                    mTvSalesOrders.setText(mHomeDataBean.getStore().getSell_statistics_yesterday().getOrder_num() + "");
                     mTvSalesMoney.setText(mHomeDataBean.getStore().getSell_statistics_yesterday().getOrder_price());
 
                     break;
                 case 3:
-                    mTvSalesOrders.setText(mHomeDataBean.getStore().getSell_statistics_sevendays().getOrder_num()+"");
+                    mTvSalesOrders.setText(mHomeDataBean.getStore().getSell_statistics_sevendays().getOrder_num() + "");
                     mTvSalesMoney.setText(mHomeDataBean.getStore().getSell_statistics_sevendays().getOrder_price());
 
                     break;
                 case 4:
-                    mTvSalesOrders.setText(mHomeDataBean.getStore().getSell_statistics_thirtydays().getOrder_num()+"");
+                    mTvSalesOrders.setText(mHomeDataBean.getStore().getSell_statistics_thirtydays().getOrder_num() + "");
                     mTvSalesMoney.setText(mHomeDataBean.getStore().getSell_statistics_thirtydays().getOrder_price());
                     break;
                 default:
                     break;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             mTvSalesOrders.setText("0");
             mTvSalesMoney.setText("0.0");
 
@@ -365,26 +367,27 @@ public class HomeFragment extends BaseFragment {
 
     }
 
-    public void showOrderStatusData(){
-        mTvUnpayOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_pay_orders()+"");
-        mTvUnshippingOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_send_orders()+"");
-        mTvProblemOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getRefunding_orders()+"");
-    }
-    @OnClick(R.id.ll_notice)
-    public void onMLlNoticeClicked() {
-        startActivity(new Intent(getContext(), NoticeListActivity.class));
+    public void showOrderStatusData() {
+        mTvUnpayOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_pay_orders() + "");
+        mTvUnshippingOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_send_orders() + "");
+        mTvProblemOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getRefunding_orders() + "");
     }
 
-    @OnClick(R.id.ll_reviews)
-    public void onMLlReviewsClicked() {
-
-    startActivity(new Intent(getContext(), EvaluationActivity.class));
-    }
-
-    @OnClick(R.id.ll_store_settings)
-    public void onMLlStoreSettingsClicked() {
-        startActivity(new Intent(getContext(), StoreSetUpActivity.class));
-    }
+//    @OnClick(R.id.ll_notice)
+//    public void onMLlNoticeClicked() {
+//        startActivity(new Intent(getContext(), NoticeListActivity.class));
+//    }
+//
+//    @OnClick(R.id.ll_reviews)
+//    public void onMLlReviewsClicked() {
+//
+//        startActivity(new Intent(getContext(), EvaluationActivity.class));
+//    }
+//
+//    @OnClick(R.id.ll_store_settings)
+//    public void onMLlStoreSettingsClicked() {
+//        startActivity(new Intent(getContext(), StoreSetUpActivity.class));
+//    }
 
     @OnClick(R.id.ll_finance)
     public void onMLlFinanceClicked() {
@@ -548,5 +551,28 @@ public class HomeFragment extends BaseFragment {
     @OnClick(R.id.tv_pay_statistics_thirtydays)
     public void onMTvPayStatisticsThirtydaysClicked() {
         changePayStatisticsTab(4);
+    }
+
+    /**
+     * 新增账户安全
+     */
+    @OnClick(R.id.ll_account_security)
+    public void onLlAccountSecurityClicked() {
+        startActivity(new Intent(getContext(), AccountAndSafeActivity.class));
+    }
+
+    /**
+     * 新增联系平台
+     */
+    @OnClick(R.id.ll_contact_platform)
+    public void onLlContactPlatformClicked() {
+        startActivity(new Intent(getContext(), AboutUsActivity.class));
+    }
+
+    /**
+     * 新增我的团长
+     */
+    @OnClick(R.id.ll_my_share)
+    public void onLlMyShareClicked() {
     }
 }
