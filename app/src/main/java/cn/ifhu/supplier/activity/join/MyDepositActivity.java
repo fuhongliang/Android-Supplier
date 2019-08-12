@@ -16,11 +16,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.ifhu.supplier.R;
+import cn.ifhu.supplier.activity.home.PhotoActivity;
 import cn.ifhu.supplier.base.BaseActivity;
 import cn.ifhu.supplier.model.newbean.data.DepostListBean;
 import cn.ifhu.supplier.utils.DepostListBeanLogic;
@@ -154,12 +156,30 @@ public class MyDepositActivity extends BaseActivity {
         mLlContent.removeAllViews();
         if (isReViewing) {
             double amount = 0;
+
+            ArrayList<String> list = new ArrayList<>();
             for (DepostListBean.ReviewBean reviewBean : depostListBean.getReview()) {
+                list.add(reviewBean.getImage_url());
+            }
+
+            for (int i = 0; i < depostListBean.getReview().size(); i++) {
+                DepostListBean.ReviewBean reviewBean = depostListBean.getReview().get(i);
                 View view = LayoutInflater.from(this).inflate(R.layout.item_depost_image, null);
                 GlideImageView mPic = view.findViewById(R.id.iv_photo);
+                int finalI = i;
+                mPic.setOnClickListener(v -> {
+
+                    Intent intent = new Intent(MyDepositActivity.this, PhotoActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putStringArrayList("url", list);
+                    bundle.putInt("index", finalI);
+                    intent.putExtra("url_list", bundle);
+                    startActivity(intent);
+                });
                 mPic.load(reviewBean.getImage_url());
                 mLlContent.addView(view);
                 amount = amount + Double.parseDouble(reviewBean.getPrice());
+
             }
             mTvAmount.setText("￥" + amount);
         } else {
@@ -184,4 +204,5 @@ public class MyDepositActivity extends BaseActivity {
     public void onMTvRightTextClicked() {
         goToActivity(DepositPostActivity.class);
     }
+
 }
