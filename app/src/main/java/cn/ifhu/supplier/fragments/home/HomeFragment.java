@@ -37,6 +37,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import cn.ifhu.supplier.R;
+import cn.ifhu.supplier.activity.home.AddShareListActivity;
+import cn.ifhu.supplier.activity.home.DeleteShareActivity;
 import cn.ifhu.supplier.activity.home.EvaluationActivity;
 import cn.ifhu.supplier.activity.home.FinanceSettlementActivity;
 import cn.ifhu.supplier.activity.join.DepositAgreementActivity;
@@ -368,9 +370,12 @@ public class HomeFragment extends BaseFragment {
     }
 
     public void showOrderStatusData() {
-        mTvUnpayOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_pay_orders() + "");
-        mTvUnshippingOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_send_orders() + "");
-        mTvProblemOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getRefunding_orders() + "");
+//        mTvUnpayOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_pay_orders() + "");
+//        mTvUnshippingOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_send_orders() + "");
+//        mTvProblemOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getRefunding_orders() + "");
+        mTvUnpayOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_pick_goods());
+        mTvUnshippingOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_send_goods());
+        mTvProblemOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getGoods_count());
     }
 
 //    @OnClick(R.id.ll_notice)
@@ -574,5 +579,6 @@ public class HomeFragment extends BaseFragment {
      */
     @OnClick(R.id.ll_my_share)
     public void onLlMyShareClicked() {
+        startActivity(new Intent(getContext(), DeleteShareActivity.class));
     }
 }

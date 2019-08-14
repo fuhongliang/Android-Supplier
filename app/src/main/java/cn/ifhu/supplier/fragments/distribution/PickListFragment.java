@@ -114,13 +114,13 @@ public class PickListFragment extends BaseFragment {
 
 
     /**
-     * 商品拣货单接口
+     * 商品拣货单列表接口
      */
     public void setPickGoods() {
         setLoadingMessageIndicator(true);
         BasePostBean basePostBean = new BasePostBean();
         RetrofitAPIManager.create(DistributionService.class).pickGoods(basePostBean)
-                .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<PickListDataBean>(true) {
+                .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<PickListDataBean>(false) {
             @Override
             protected void onApiComplete() {
                 setLoadingMessageIndicator(false);
@@ -128,7 +128,6 @@ public class PickListFragment extends BaseFragment {
 
             @Override
             protected void onSuccees(BaseEntity<PickListDataBean> t) throws Exception {
-                ToastHelper.makeText(t.getMessage()).show();
             }
         });
 

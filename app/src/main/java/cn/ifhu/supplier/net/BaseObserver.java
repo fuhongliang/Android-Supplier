@@ -98,7 +98,9 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
                         onFailure(e, false);
                     }
                 } else {
-                    ToastHelper.makeText(e.getMessage(), Toast.LENGTH_LONG, ToastHelper.WARNWITHICONTOAST).show();
+                    if (needShowErroToast) {
+                        ToastHelper.makeText(e.getMessage(), Toast.LENGTH_LONG, ToastHelper.WARNWITHICONTOAST).show();
+                    }
                 }
             }
         } catch (Exception e1) {
@@ -132,7 +134,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
      * @param t
      */
     protected void onCodeError(BaseEntity<T> t) throws Exception {
-        ToastHelper.makeText(t.getMessage()).show();
+
     }
 
 

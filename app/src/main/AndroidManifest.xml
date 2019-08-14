@@ -258,6 +258,8 @@
         <activity android:name="cn.ifhu.supplier.activity.home.WeChatWithdrawActivity"/>
         <activity android:name="cn.ifhu.supplier.activity.home.BankWithdrawActivity"/>
         <activity android:name=".activity.home.PhotoActivity"/>
+        <activity android:name=".activity.home.AddShareListActivity"/>
+        <activity android:name=".activity.home.DeleteShareActivity"/>
     </application>
 
 </manifest>

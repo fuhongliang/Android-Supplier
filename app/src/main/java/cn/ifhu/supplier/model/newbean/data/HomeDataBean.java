@@ -238,6 +238,38 @@ public class HomeDataBean {
             private int wait_send_orders;
             private int refunding_orders;
 
+            /**
+             * 更换数据
+             * @return
+             */
+            private int wait_pick_goods;
+            private int wait_send_goods;
+            private int goods_count;
+
+            public int getWait_pick_goods() {
+                return wait_pick_goods;
+            }
+
+            public void setWait_pick_goods(int wait_pick_goods) {
+                this.wait_pick_goods = wait_pick_goods;
+            }
+
+            public int getWait_send_goods() {
+                return wait_send_goods;
+            }
+
+            public void setWait_send_goods(int wait_send_goods) {
+                this.wait_send_goods = wait_send_goods;
+            }
+
+            public int getGoods_count() {
+                return goods_count;
+            }
+
+            public void setGoods_count(int goods_count) {
+                this.goods_count = goods_count;
+            }
+
             public int getWait_pay_orders() {
                 return wait_pay_orders;
             }

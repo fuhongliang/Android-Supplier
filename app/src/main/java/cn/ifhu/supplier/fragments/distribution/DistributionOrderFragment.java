@@ -147,7 +147,7 @@ public class DistributionOrderFragment extends BaseFragment {
         setLoadingMessageIndicator(true);
         BasePostBean basePostBean = new BasePostBean();
         RetrofitAPIManager.create(DistributionService.class).deliverGoods(basePostBean)
-                .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<DeliverGoodsDataBean>(true) {
+                .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<DeliverGoodsDataBean>(false) {
             @Override
             protected void onApiComplete() {
                 setLoadingMessageIndicator(false);
@@ -155,7 +155,6 @@ public class DistributionOrderFragment extends BaseFragment {
 
             @Override
             protected void onSuccees(BaseEntity<DeliverGoodsDataBean> t) throws Exception {
-                ToastHelper.makeText(t.getMessage()).show();
             }
         });
     }
