@@ -7,6 +7,7 @@ import cn.ifhu.supplier.model.newbean.data.DeliverGoodsDetailDataBean;
 import cn.ifhu.supplier.model.newbean.data.PickListDataBean;
 import cn.ifhu.supplier.model.newbean.data.PickingDetailsDataBean;
 import cn.ifhu.supplier.model.newbean.post.BasePostBean;
+import cn.ifhu.supplier.model.newbean.post.PaginationPostBean;
 import cn.ifhu.supplier.model.newbean.post.SetDeliverPostBean;
 import cn.ifhu.supplier.model.newbean.post.SetPickingPostBean;
 import io.reactivex.Observable;
@@ -25,11 +26,10 @@ public interface DistributionService {
      * @return 分类列表
      */
     @POST("pick_goods")
-    public Observable<BaseEntity<PickListDataBean>> pickGoods(@Body BasePostBean basePostBean);
+    public Observable<BaseEntity<PickListDataBean>> pickGoods(@Body PaginationPostBean paginationPostBean);
     /**
      * 新接口 获取商品拣货单详情
      *
-     * @return 分类列表
      */
     @POST("pick_detail")
     public Observable<BaseEntity<PickingDetailsDataBean>> pickDetail(@Body SetPickingPostBean setPickingPostBean);
@@ -45,13 +45,12 @@ public interface DistributionService {
      * @return 分类列表
      */
     @POST("deliver_goods")
-    public Observable<BaseEntity<DeliverGoodsDataBean>> deliverGoods(@Body BasePostBean basePostBean);
+    public Observable<BaseEntity<DeliverGoodsDataBean>> deliverGoods(@Body PaginationPostBean paginationPostBean);
 
 
     /**
      * 新接口 获取配货单详情
      *
-     * @return 分类列表
      */
     @POST("deliver_goods_detail")
     public Observable<BaseEntity<DeliverGoodsDetailDataBean>> deliverGoodsDetail(@Body SetDeliverPostBean setDeliverPostBean);

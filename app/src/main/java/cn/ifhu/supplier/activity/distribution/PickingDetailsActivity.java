@@ -1,12 +1,17 @@
 package cn.ifhu.supplier.activity.distribution;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -14,6 +19,14 @@ import butterknife.OnClick;
 import cn.ifhu.supplier.R;
 import cn.ifhu.supplier.adapter.PickingDetailsAdapter;
 import cn.ifhu.supplier.base.BaseActivity;
+import cn.ifhu.supplier.model.bean.BaseEntity;
+import cn.ifhu.supplier.model.newbean.data.PickingDetailsDataBean;
+import cn.ifhu.supplier.model.newbean.post.SetPickingPostBean;
+import cn.ifhu.supplier.net.BaseObserver;
+import cn.ifhu.supplier.net.DistributionService;
+import cn.ifhu.supplier.net.RetrofitAPIManager;
+import cn.ifhu.supplier.net.SchedulerUtils;
+import cn.ifhu.supplier.utils.DateUtil;
 import cn.ifhu.supplier.view.ExpandListView;
 
 /**
@@ -57,27 +70,77 @@ public class PickingDetailsActivity extends BaseActivity {
     RelativeLayout rlCustomer;
     @BindView(R.id.listView)
     ExpandListView listView;
+    List<PickingDetailsDataBean.GoodsListBean> mData = new ArrayList<>();
+
     PickingDetailsAdapter newpickingDetailsAdapter;
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picking_details);
         ButterKnife.bind(this);
         tvTitle.setText("拣货单详情");
-        setDatas();
+        newpickingDetailsAdapter = new PickingDetailsAdapter(mData,this);
         listView.setAdapter(newpickingDetailsAdapter);
+        getPickingDetails();
     }
 
-    public void setDatas() {
+//    public void setDatas() {
+//        Intent intent = getIntent();
+//        tvOrderSn.setText(intent.getIntExtra("Huodan_id", 0) + "");
+//        tvCreateTime.setText(DateUtil.stampToDate(intent.getIntExtra("Create_time", 0), " "));
+//        tvGoodsNum.setText(intent.getIntExtra("Goods_num", 0) + "件");
+//        tvGoodsCount.setText(intent.getIntExtra("Goods_count", 0) + "" + "种");
+//        tvTotalPayPrice.setText("￥" + intent.getStringExtra("Total_pay_price"));
+//        if (intent.getIntExtra("pick_status", 0) == 0) {
+//            tvOrderState.setText("待拣货");
+//            tvOrderState.setTextColor(getResources().getColor(R.color.order_service_color));
+//            rlCustomer.setVisibility(View.GONE);
+//            tvSave.setVisibility(View.VISIBLE);
+//
+//        } else {
+//            tvOrderState.setText("已拣货");
+//            tvOrderState.setTextColor(getResources().getColor(R.color.order_comfirm_color));
+//            rlCustomer.setVisibility(View.GONE);
+//            tvSave.setVisibility(View.GONE);
+//        }
+//    }
+
+    /**
+     * 拣货单详情接口
+     */
+
+    public void getPickingDetails() {
+        setLoadingMessageIndicator(true);
         Intent intent = getIntent();
-        tvOrderSn.setText(intent.getIntExtra("Huodan_id", 0) + "");
-        tvCreateTime.setText(intent.getStringExtra("Create_time"));
-        tvGoodsNum.setText(intent.getIntExtra("Goods_num", 0) + "");
-        tvGoodsCount.setText(intent.getIntExtra("Goods_Count", 0) + "");
-        tvTotalPayPrice.setText(intent.getStringExtra("Total_pay_price"));
-        tvOrderState.setText(intent.getIntExtra("pick_status", 0) + "");
+        SetPickingPostBean setPickingPostBean = new SetPickingPostBean();
+        setPickingPostBean.setHuodan_id(intent.getIntExtra("Huodan_id", 0));
+        tvCreateTime.setText(DateUtil.stampToDate(intent.getIntExtra("Create_time", 0), " "));
+        tvGoodsNum.setText(intent.getIntExtra("Goods_num", 0) + "件");
+        tvGoodsCount.setText(intent.getIntExtra("Goods_count", 0) + "" + "种");
+        tvTotalPayPrice.setText("￥" + intent.getStringExtra("Total_pay_price"));
+        if (intent.getIntExtra("pick_status", 0) == 0) {
+            tvOrderState.setText("待拣货");
+            tvOrderState.setTextColor(getResources().getColor(R.color.order_service_color));
+            rlCustomer.setVisibility(View.GONE);
+            tvSave.setVisibility(View.VISIBLE);
+
+        } else {
+            tvOrderState.setText("已拣货");
+            tvOrderState.setTextColor(getResources().getColor(R.color.order_comfirm_color));
+            rlCustomer.setVisibility(View.GONE);
+            tvSave.setVisibility(View.GONE);
+        }
+        RetrofitAPIManager.create(DistributionService.class).pickDetail(setPickingPostBean)
+                .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<PickingDetailsDataBean>(true) {
+            @Override
+            protected void onApiComplete() {
+                setLoadingMessageIndicator(false);
+            }
+            @Override
+            protected void onSuccees(BaseEntity<PickingDetailsDataBean> t) throws Exception {
+                newpickingDetailsAdapter.setmData(t.getData().getGoods_list());
+            }
+        });
     }
 
     @OnClick(R.id.iv_back)
@@ -87,5 +150,6 @@ public class PickingDetailsActivity extends BaseActivity {
 
     @OnClick(R.id.tv_save)
     public void onTvSaveClicked() {
+
     }
 }

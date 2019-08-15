@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,7 @@ import cn.ifhu.supplier.base.LoadMoreScrollListener;
 import cn.ifhu.supplier.model.bean.BaseEntity;
 import cn.ifhu.supplier.model.newbean.data.DeliverGoodsDataBean;
 import cn.ifhu.supplier.model.newbean.post.BasePostBean;
+import cn.ifhu.supplier.model.newbean.post.PaginationPostBean;
 import cn.ifhu.supplier.model.newbean.post.SetDeliverPostBean;
 import cn.ifhu.supplier.net.BaseObserver;
 import cn.ifhu.supplier.net.DistributionService;
@@ -45,7 +48,6 @@ public class DistributionOrderFragment extends BaseFragment {
     Unbinder unbinder;
 
 
-    DistributionOrderAdapter newDistrbutionOrderAdapter;
     @BindView(R.id.recycler_list_test)
     RecyclerView recyclerList;
     @BindView(R.id.order)
@@ -54,6 +56,8 @@ public class DistributionOrderFragment extends BaseFragment {
     FrameLayout rlEmpty;
     @BindView(R.id.layout_swipe_refresh)
     SwipeRefreshLayout layoutSwipeRefresh;
+
+    DistributionOrderAdapter newDistrbutionOrderAdapter;
 
     public static Fragment newInstance() {
         return new DistributionOrderFragment();
@@ -66,7 +70,7 @@ public class DistributionOrderFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_supplier_order, container, false);
         unbinder = ButterKnife.bind(this, view);
-        setDeliverGoods();
+        getDeliverGoods(1);
         return view;
     }
 
@@ -138,15 +142,18 @@ public class DistributionOrderFragment extends BaseFragment {
         recyclerList.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         recyclerList.setAdapter(newDistrbutionOrderAdapter);
         recyclerList.setOnScrollListener(new LoadMoreScrollListener(recyclerList));
+        getDeliverGoods(1);
     }
 
     /**
-     * 配货单列表接口
+     * 配货单列表接口、分页
      */
-    public void setDeliverGoods() {
+    public void getDeliverGoods(int pages) {
         setLoadingMessageIndicator(true);
-        BasePostBean basePostBean = new BasePostBean();
-        RetrofitAPIManager.create(DistributionService.class).deliverGoods(basePostBean)
+        PaginationPostBean  paginationPostBean = new PaginationPostBean();
+        paginationPostBean.setLimit(10);
+        paginationPostBean.setPage(pages);
+        RetrofitAPIManager.create(DistributionService.class).deliverGoods(paginationPostBean)
                 .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<DeliverGoodsDataBean>(false) {
             @Override
             protected void onApiComplete() {
@@ -155,6 +162,25 @@ public class DistributionOrderFragment extends BaseFragment {
 
             @Override
             protected void onSuccees(BaseEntity<DeliverGoodsDataBean> t) throws Exception {
+                if (pages == 1){
+                    mDatas.clear();
+                    mDatas.addAll(t.getData().getList());
+                    newDistrbutionOrderAdapter.setData(mDatas);
+                }else {
+                    mDatas.addAll(t.getData().getList());
+                    newDistrbutionOrderAdapter.appendList(t.getData().getList());
+                }
+            }
+            @Override
+            protected void onAPIError() {
+                super.onAPIError();
+                Logger.d("onAPIError: ");
+            }
+
+            @Override
+            protected void onCodeError(BaseEntity<DeliverGoodsDataBean> t) throws Exception {
+                super.onCodeError(t);
+                Logger.d("t.code" + t.code);
             }
         });
     }

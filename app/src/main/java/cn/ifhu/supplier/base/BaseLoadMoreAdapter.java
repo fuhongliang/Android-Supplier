@@ -80,6 +80,26 @@ public abstract class BaseLoadMoreAdapter<T,VH> extends RecyclerView.Adapter {
             }
         }
     }
+    /**
+     * 在后面加添加数据
+     *
+     * @param data 新加进来的数据
+     */
+    public final void appendData(T data) {
+        int positionStart = getDataList().size();
+        getDataList().add(data);
+        int itemCount = getDataList().size() - positionStart;
+
+        if (positionStart == 0) {
+            notifyDataSetChanged();
+        } else {
+            notifyItemRangeInserted(positionStart + 1, itemCount);
+            loadIndex++;
+            if (itemCount < PAGESIZE) {
+                loadState = STATE_LASTED;
+            }
+        }
+    }
 
     public final void setLoadEorro() {
         loadState = STATE_ERROR;

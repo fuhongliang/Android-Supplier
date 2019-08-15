@@ -9,12 +9,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.marshalchen.ultimaterecyclerview.UltimateViewAdapter;
+
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.ifhu.supplier.R;
+import cn.ifhu.supplier.base.BaseLoadMoreAdapter;
 import cn.ifhu.supplier.model.newbean.data.AllEvaluationDataBean;
 import cn.ifhu.supplier.utils.DateUtil;
 import cn.ifhu.supplier.utils.DeviceUtil;
@@ -24,38 +28,12 @@ import cn.ifhu.supplier.view.GlideImageView.GlideImageView;
 /**
  * 评价适配器
  */
-public class AllEvaluationAdapter extends UltimateViewAdapter<AllEvaluationAdapter.ViewHolder> {
+public class AllEvaluationAdapter extends BaseLoadMoreAdapter<AllEvaluationDataBean.CommentBean, AllEvaluationAdapter.ViewHolder> {
 
-
-
-    private String loading = "正在加载中...";
-    private boolean isCanLoading = true;
-
-
-    public interface OnclickButton {
-        void delete(int position);
-
-        void hide(int position);
-
-        void reply(int position);
-
-    }
-
-    boolean isCancelOrder = false;
 
     private List<AllEvaluationDataBean.CommentBean> mDatas;
     private Context mContext;
     public OnclickButton onclickButton;
-
-    UltimateRecyclerView recyclerObject;//外部的列表对象
-
-    public boolean isCancelOrder() {
-        return isCancelOrder;
-    }
-
-    public void setCancelOrder(boolean cancelOrder) {
-        isCancelOrder = cancelOrder;
-    }
 
     public AllEvaluationAdapter(List<AllEvaluationDataBean.CommentBean> mDatas, Context mContext, OnclickButton onclickButton) {
         this.mDatas = mDatas;
@@ -63,80 +41,23 @@ public class AllEvaluationAdapter extends UltimateViewAdapter<AllEvaluationAdapt
         this.onclickButton = onclickButton;
     }
 
-    public void setRecyclerObject(UltimateRecyclerView recyclerObject) {
-        this.recyclerObject = recyclerObject;
-    }
-
-    public void updateData(List<AllEvaluationDataBean.CommentBean> mDatas) {
-        this.mDatas = mDatas;
-        notifyDataSetChanged();
-    }
-
-    /**
-     * 插入新的数据列
-     *
-     * @param newDatas 需要插入的数据
-     */
-    public void insert(List<AllEvaluationDataBean.CommentBean> newDatas) {
-        insertInternal(mDatas, newDatas);
-    }
-
-    /**
-     * 设置加载状态
-     *
-     * @param mCancelLoading
-     */
-    public void setLoadingState(boolean mCancelLoading) {
-        if (mCancelLoading) {
-            loading = "没有更多数据啦 >_< ";
-            isCanLoading = false;
-        } else {
-            loading = "正在加载中...";
-            isCanLoading = true;
-        }
-        notifyItemChanged(mDatas.size());
-    }
-
-    public boolean getLoadingState() {
-        return isCanLoading;
+    @Override
+    public RecyclerView.ViewHolder getViewHolder() {
+        return new ViewHolder(View.inflate(mContext, R.layout.item_evaluation, null));
     }
 
     @Override
-    public ViewHolder newFooterHolder(View view) {
-        View view11 = LayoutInflater.from(mContext).inflate(R.layout.load_more_layout, recyclerObject, false);
-        return new ViewHolder(view11, true);
+    public List<AllEvaluationDataBean.CommentBean> getDataList() {
+        return mDatas;
     }
 
     @Override
-    public ViewHolder newHeaderHolder(View view) {
-        return null;
-    }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent) {
-        ViewHolder holder = new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_evaluation, recyclerObject, false), false);
-        return holder;
-    }
-
-    @Override
-    public int getAdapterItemCount() {
-        return mDatas.size();
-    }
-
-    @Override
-    public long generateHeaderId(int position) {
-        //生成每个item的头部的id
-        return 0;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+    public void bindOtherViewHolder(@NonNull ViewHolder holder, int position) {
         if (position == mDatas.size()) return;
         if (position < mDatas.size()) {
             holder.ivAvatar.loadCircle(mDatas.get(position).getAvatar());
             holder.tvName.setText(mDatas.get(position).getName());
-            holder.addtime.setText(DateUtil.stampToDate(mDatas.get(position).getAddtime()," "));
+            holder.addtime.setText(DateUtil.stampToDate(mDatas.get(position).getAddtime(), " "));
             if (StringUtils.isEmpty(mDatas.get(position).getContent())) {
                 holder.tvContent.setVisibility(View.GONE);
             } else {
@@ -168,7 +89,7 @@ public class AllEvaluationAdapter extends UltimateViewAdapter<AllEvaluationAdapt
                 holder.llPicList.setVerticalGravity(View.VISIBLE);
                 holder.llPicList.removeAllViews();
                 for (int i = 0; i < mDatas.get(position).getPic_list().size(); i++) {
-                    View categoryView = LayoutInflater.from(mContext).inflate(R.layout.review_image_item, recyclerObject, false);
+                    View categoryView = LayoutInflater.from(mContext).inflate(R.layout.review_image_item, null, false);
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DeviceUtil.dip2px(105), DeviceUtil.dip2px(90));
                     params.leftMargin = DeviceUtil.dip2px(15);
                     GlideImageView imageView = categoryView.findViewById(R.id.iv_image);
@@ -187,7 +108,7 @@ public class AllEvaluationAdapter extends UltimateViewAdapter<AllEvaluationAdapt
                     }
                 }
             });
-            holder.tvBtnHide.setText(mDatas.get(position).getIs_hide()==1 ? "显示":"隐藏");
+            holder.tvBtnHide.setText(mDatas.get(position).getIs_hide() == 1 ? "显示" : "隐藏");
             holder.tvBtnHide.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -204,21 +125,31 @@ public class AllEvaluationAdapter extends UltimateViewAdapter<AllEvaluationAdapt
                     }
                 }
             });
-        } else {
-            // TODO: 2019-07-02 底部加载item
-            holder.footer.setText(loading);
         }
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-        return null;
+    public void setData(List<AllEvaluationDataBean.CommentBean> data) {
+        mDatas = data;
+        resetLodingMore();
+        notifyDataSetChanged();
     }
 
     @Override
-    public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public int getItemCount() {
+        return 0;
+    }
+
+    public interface OnclickButton {
+        void delete(int position);
+
+        void hide(int position);
+
+        void reply(int position);
 
     }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.iv_avatar)
@@ -247,14 +178,10 @@ public class AllEvaluationAdapter extends UltimateViewAdapter<AllEvaluationAdapt
         TextView tvLine;
         TextView footer;
 
-        public ViewHolder(@NonNull View itemView, boolean isFooter) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            if (isFooter) {
-                footer = itemView.findViewById(R.id.text_text);
-            } else {
-                ButterKnife.bind(this, itemView);
-            }
-//            ButterKnife.bind(itemView);
+
+            ButterKnife.bind(this, itemView);
         }
     }
 

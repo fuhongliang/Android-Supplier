@@ -154,7 +154,7 @@ public class MyDepositActivity extends BaseActivity {
 
     public void showDepositImages(boolean isReViewing) {
         mLlContent.removeAllViews();
-        if (isReViewing) {
+//        if (isReViewing) {
             double amount = 0;
 
             ArrayList<String> list = new ArrayList<>();
@@ -168,7 +168,6 @@ public class MyDepositActivity extends BaseActivity {
                 GlideImageView mPic = view.findViewById(R.id.iv_photo);
                 int finalI = i;
                 mPic.setOnClickListener(v -> {
-
                     Intent intent = new Intent(MyDepositActivity.this, PhotoActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putStringArrayList("url", list);
@@ -182,17 +181,27 @@ public class MyDepositActivity extends BaseActivity {
 
             }
             mTvAmount.setText("￥" + amount);
-        } else {
-            double amount = 0;
-            for (DepostListBean.PassBean passBean : depostListBean.getPass()) {
-                View view = LayoutInflater.from(this).inflate(R.layout.item_depost_image, null);
-                GlideImageView mPic = view.findViewById(R.id.iv_photo);
-                mPic.load(passBean.getImage_url());
-                mLlContent.addView(view);
-                amount = amount + Double.parseDouble(passBean.getPrice());
-            }
-            mTvAmount.setText("￥" + amount);
-        }
+//        }else {
+//            double amount = 0;
+//            ArrayList<String> list = new ArrayList<>();
+//            for (DepostListBean.PassBean passBean : depostListBean.getPass()) {
+//                View view = LayoutInflater.from(this).inflate(R.layout.item_depost_image, null);
+//                GlideImageView mPic = view.findViewById(R.id.iv_photo);
+//                int finalI = i;
+//                mPic.setOnClickListener(v -> {
+//                    Intent intent = new Intent(MyDepositActivity.this, PhotoActivity.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putStringArrayList("url", list);
+//                    bundle.putInt("index", finalI);
+//                    intent.putExtra("url_list", bundle);
+//                    startActivity(intent);
+//                });
+//                mPic.load(passBean.getImage_url());
+//                mLlContent.addView(view);
+//                amount = amount + Double.parseDouble(passBean.getPrice());
+//            }
+//            mTvAmount.setText("￥" + amount);
+//        }
     }
 
     @OnClick(R.id.iv_back)

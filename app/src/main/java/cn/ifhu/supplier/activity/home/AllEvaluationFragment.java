@@ -6,21 +6,25 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
+
 import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.ifhu.supplier.R;
 import cn.ifhu.supplier.adapter.AllEvaluationAdapter;
 import cn.ifhu.supplier.base.BaseFragment;
+import cn.ifhu.supplier.base.LoadMoreScrollListener;
 import cn.ifhu.supplier.model.bean.BaseEntity;
 import cn.ifhu.supplier.model.newbean.data.AllEvaluationDataBean;
 import cn.ifhu.supplier.model.newbean.post.AllEvaluationDeletePostBean;
@@ -31,6 +35,7 @@ import cn.ifhu.supplier.net.OrderService;
 import cn.ifhu.supplier.net.RetrofitAPIManager;
 import cn.ifhu.supplier.net.SchedulerUtils;
 import cn.ifhu.supplier.utils.DialogUtils;
+import cn.ifhu.supplier.utils.DividerItemDecoration;
 import cn.ifhu.supplier.utils.ToastHelper;
 import cn.ifhu.supplier.view.dialog.nicedialog.ConfirmDialog;
 import cn.ifhu.supplier.view.dialog.nicedialog.ReplyDialog;
@@ -42,8 +47,10 @@ import cn.ifhu.supplier.view.dialog.nicedialog.ReplyDialog;
 public class AllEvaluationFragment extends BaseFragment {
 
     Unbinder unbinder;
-    @BindView(R.id.recycler_list)
-    UltimateRecyclerView recyclerList;
+    AllEvaluationAdapter newEvaluationAdapter;
+
+    @BindView(R.id.recycler_list_test)
+    RecyclerView recyclerList;
     @BindView(R.id.order)
     TextView order;
     @BindView(R.id.rl_empty)
@@ -51,9 +58,6 @@ public class AllEvaluationFragment extends BaseFragment {
     @BindView(R.id.layout_swipe_refresh)
     SwipeRefreshLayout layoutSwipeRefresh;
 
-    AllEvaluationAdapter newEvaluationAdapter;
-
-    private int currentPages = 1;
 
     public static AllEvaluationFragment newInstance() {
         return new AllEvaluationFragment();
@@ -68,7 +72,7 @@ public class AllEvaluationFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_orders_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_supplier_order, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -76,15 +80,7 @@ public class AllEvaluationFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerList.setLoadMoreView(LayoutInflater.from(getActivity()).inflate(R.layout.load_more_layout, null, false));
-        recyclerList.reenableLoadmore();
-        recyclerList.setOnLoadMoreListener((itemsCount, maxLastVisiblePosition) -> {
-            // TODO: 2019-07-02 请求处理
-            if (newEvaluationAdapter.getLoadingState()) {
-                getAllEvaluations(++currentPages);
-            }
-        });
+
         newEvaluationAdapter = new AllEvaluationAdapter(mDatas, getActivity(), new AllEvaluationAdapter.OnclickButton() {
             @Override
             public void delete(int position) {
@@ -97,7 +93,7 @@ public class AllEvaluationFragment extends BaseFragment {
 
                     @Override
                     public void ok() {
-                        deleteEvaluation(position,1);
+                        deleteEvaluation(position, 1);
                     }
                 });
 
@@ -114,7 +110,7 @@ public class AllEvaluationFragment extends BaseFragment {
 
                     @Override
                     public void ok() {
-                            deleteEvaluation(position,0);
+                        deleteEvaluation(position, 0);
                     }
                 });
 
@@ -151,24 +147,29 @@ public class AllEvaluationFragment extends BaseFragment {
                 });
             }
         });
-        newEvaluationAdapter.setRecyclerObject(recyclerList);
+        newEvaluationAdapter.setLoadMordListener(loadIndex -> {
+            getAllEvaluations(loadIndex);
+        });
+        recyclerList.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL_LIST));
         recyclerList.setAdapter(newEvaluationAdapter);
+        recyclerList.setOnScrollListener(new LoadMoreScrollListener(recyclerList));
         setRefreshLayout();
         getAllEvaluations(1);
     }
 
     /**
      * 评价删除或隐藏接口
+     *
      * @param index
      * @param isDelete
      */
-    public void deleteEvaluation(int index,int isDelete) {
+    public void deleteEvaluation(int index, int isDelete) {
         layoutSwipeRefresh.setRefreshing(true);
         AllEvaluationDeletePostBean allEvaluationDeletePostBean = new AllEvaluationDeletePostBean();
-        if (isDelete == 1){
+        if (isDelete == 1) {
             allEvaluationDeletePostBean.setDelete(1);
-        }else {
-            allEvaluationDeletePostBean.setHide(mDatas.get(index).getIs_hide()==1 ? 0 : 1);
+        } else {
+            allEvaluationDeletePostBean.setHide(mDatas.get(index).getIs_hide() == 1 ? 0 : 1);
         }
         allEvaluationDeletePostBean.setId(mDatas.get(index).getId() + "");
         RetrofitAPIManager.create(OrderService.class).commentHod(allEvaluationDeletePostBean)
@@ -196,12 +197,13 @@ public class AllEvaluationFragment extends BaseFragment {
 
     /**
      * 评价列表接口、分页
+     *
      * @param pages
      */
     public void getAllEvaluations(int pages) {
         layoutSwipeRefresh.setRefreshing(true);
         AllEvaluationPostBean allEvaluationPostBean = new AllEvaluationPostBean();
-        allEvaluationPostBean.setLimit(20);
+        allEvaluationPostBean.setLimit(10);
         allEvaluationPostBean.setPage(pages + "");
         RetrofitAPIManager.create(OrderService.class).getCommentList(allEvaluationPostBean)
                 .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<AllEvaluationDataBean>(true) {
@@ -214,30 +216,14 @@ public class AllEvaluationFragment extends BaseFragment {
             @Override
             protected void onSuccees(BaseEntity<AllEvaluationDataBean> t) throws Exception {
 
-
-                if (t.getData() == null || t.getData().getComment().isEmpty()) {
-                    newEvaluationAdapter.setLoadingState(true);
-                    if (mDatas.size() != 0 && pages == 1) {
-                        mDatas.clear();
-                        newEvaluationAdapter.updateData(mDatas);
-                    }
-                } else {
                     if (pages == 1) {
                         mDatas.clear();
                         mDatas.addAll(t.getData().getComment());
-                        newEvaluationAdapter.updateData(mDatas);
-                        currentPages = 1;
+                        newEvaluationAdapter.setData(mDatas);
                     } else {
                         mDatas.addAll(t.getData().getComment());
-                        newEvaluationAdapter.insert(t.getData().getComment());
+                        newEvaluationAdapter.appendList(t.getData().getComment());
                     }
-                    if (t.getData().getComment().size() < 20) {
-                        newEvaluationAdapter.setLoadingState(true);
-                    } else {
-                        newEvaluationAdapter.setLoadingState(false);
-                    }
-                    currentPages = currentPages + 1;
-                }
                 updateEmptyView();
 
             }
@@ -251,7 +237,7 @@ public class AllEvaluationFragment extends BaseFragment {
             @Override
             protected void onCodeError(BaseEntity<AllEvaluationDataBean> t) throws Exception {
                 super.onCodeError(t);
-                Logger.d("t.code"+t.code);
+                Logger.d("t.code" + t.code);
             }
         });
 
@@ -259,11 +245,16 @@ public class AllEvaluationFragment extends BaseFragment {
 
     public void updateEmptyView() {
         if (newEvaluationAdapter.getItemCount() > 0) {
-//            llEmpty.setVisibility(View.GONE);
+            rlEmpty.setVisibility(View.GONE);
         } else {
-//            llEmpty.setVisibility(View.VISIBLE);
+            rlEmpty.setVisibility(View.VISIBLE);
         }
     }
 
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

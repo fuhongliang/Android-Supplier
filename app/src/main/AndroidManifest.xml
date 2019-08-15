@@ -260,6 +260,7 @@
         <activity android:name=".activity.home.PhotoActivity"/>
         <activity android:name=".activity.home.AddShareListActivity"/>
         <activity android:name=".activity.home.DeleteShareActivity"/>
+        <activity android:name=".activity.distribution.PickingDetailsActivity"/>
     </application>
 
 </manifest>
