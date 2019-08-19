@@ -6,8 +6,6 @@
 
     <include layout="@layout/layout_header" />
 
-    <ListView
-        android:id="@+id/lv_share"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <include layout="@layout/fragment_supplier_order"/>
+
 </LinearLayout>

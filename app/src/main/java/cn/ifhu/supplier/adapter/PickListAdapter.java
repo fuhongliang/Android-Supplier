@@ -59,16 +59,16 @@ public class PickListAdapter extends BaseLoadMoreAdapter<PickListDataBean.PickLi
         if (mDatas.get(position).getPick_status() == 0) {
             holder.tvOrderState.setText("待拣货");
             holder.tvOrderState.setTextColor(mContext.getResources().getColor(R.color.order_service_color));
-            holder.llBottom.setVerticalGravity(View.VISIBLE);
+            holder.llBottom.setVisibility(View.VISIBLE);
         } else {
             holder.tvOrderState.setText("已拣货");
             holder.tvOrderState.setTextColor(mContext.getResources().getColor(R.color.order_comfirm_color));
-            holder.llBottom.setVerticalGravity(View.GONE);
+            holder.llBottom.setVisibility(View.GONE);
         }
         holder.tvProductName.setText(mDatas.get(position).getGoods_info().getName());
         holder.ivPhoto.load(mDatas.get(position).getGoods_info().getPic());
-        holder.tvSpecification.setText(mDatas.get(position).getGoods_info().getAttr().get(position).getAttr_group_name()+":");
-        holder.tvDefault.setText(mDatas.get(position).getGoods_info().getAttr().get(position).getAttr_name());
+        holder.tvSpecification.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_group_name()+":");
+        holder.tvDefault.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_name());
         holder.tvPrice.setText("￥"+mDatas.get(position).getGoods_info().getTotal_price());
         holder.tvAmount.setText("x"+mDatas.get(position).getGoods_info().getNum() + "");
         holder.ok.setOnClickListener(v -> {

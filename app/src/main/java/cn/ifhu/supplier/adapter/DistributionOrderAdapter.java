@@ -6,15 +6,18 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import cn.ifhu.supplier.R;
 import cn.ifhu.supplier.base.BaseLoadMoreAdapter;
 import cn.ifhu.supplier.model.newbean.data.DeliverGoodsDataBean;
+import cn.ifhu.supplier.utils.DateUtil;
 import cn.ifhu.supplier.view.GlideImageView.GlideImageView;
 
 public class DistributionOrderAdapter extends BaseLoadMoreAdapter<DeliverGoodsDataBean.ListBean, DistributionOrderAdapter.ViewHolder> {
@@ -24,16 +27,16 @@ public class DistributionOrderAdapter extends BaseLoadMoreAdapter<DeliverGoodsDa
     private Context mContext;
     private OnclickButton onclickButton;
 
-    public void setData(List<DeliverGoodsDataBean.ListBean> data) {
-        mDatas = data;
-        resetLodingMore();
-        notifyDataSetChanged();
-    }
-
     public DistributionOrderAdapter(List<DeliverGoodsDataBean.ListBean> mDatas, Context mContext, OnclickButton onclickButton) {
         this.mDatas = mDatas;
         this.mContext = mContext;
         this.onclickButton = onclickButton;
+    }
+
+    public void setData(List<DeliverGoodsDataBean.ListBean> data) {
+        mDatas = data;
+        resetLodingMore();
+        notifyDataSetChanged();
     }
 
     @Override
@@ -48,28 +51,30 @@ public class DistributionOrderAdapter extends BaseLoadMoreAdapter<DeliverGoodsDa
 
     @Override
     public void bindOtherViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvOrderSn.setText(mDatas.get(position).getDeliver_id());
-        holder.tvOrderTime.setText(mDatas.get(position).getAddtime());
+        holder.tvOrderSn.setText(mDatas.get(position).getDeliver_id() + "");
+        holder.tvOrderTime.setText("生成时间: " + DateUtil.stampToDate(mDatas.get(position).getAddtime(), " ") + "");
         if (mDatas.get(position).getIs_send() == 0) {
             holder.tvOrderState.setText("待配送");
             holder.tvOrderState.setTextColor(mContext.getResources().getColor(R.color.order_service_color));
-            holder.llBottom.setVerticalGravity(View.VISIBLE);
+            holder.llBottom.setVisibility(View.VISIBLE);
         } else {
             holder.tvOrderState.setText("已配送");
             holder.tvOrderState.setTextColor(mContext.getResources().getColor(R.color.order_comfirm_color));
-            holder.llBottom.setVerticalGravity(View.GONE);
+            holder.llBottom.setVisibility(View.GONE);
         }
-        holder.tvPriceAmount.setText(mDatas.get(position).getTotal_price());
-        holder.tvShippingFee.setText(mDatas.get(position).getNum());
-        holder.tvGoodsAmount.setText(mDatas.get(position).getGoods_attr_count());
+        holder.tvPriceAmount.setText("(合计￥" + mDatas.get(position).getTotal_price() + ")");
+        holder.tvShippingFee.setText("总共" + mDatas.get(position).getNum() + "" + "件");
+        holder.tvGoodsAmount.setText("共" + mDatas.get(position).getGoods_attr_count() + "" + "类商品");
         holder.tvCustomerName.setText(mDatas.get(position).getName());
         holder.tvCustomerPhone.setText(mDatas.get(position).getMobile());
-        holder.tvCustomerAddress.setText(mDatas.get(position).getDistrict());
+        holder.tvCustomerAddress.setText("详细地址: " + mDatas.get(position).getDistrict());
         holder.ivPhoto.load(mDatas.get(position).getGoods_info().getPic());
         holder.tvProductName.setText(mDatas.get(position).getGoods_info().getName());
-        holder.tvPrice.setText(mDatas.get(position).getGoods_info().getTotal_price());
-        holder.tvAmount.setText(mDatas.get(position).getGoods_info().getNum());
-        holder.tvSpecification.setText(mDatas.get(position).getGoods_info().getAttr().get(position).getAttr_name());
+        holder.tvPrice.setText("￥" + mDatas.get(position).getGoods_info().getTotal_price() + "");
+        holder.tvAmount.setText("x" + mDatas.get(position).getGoods_info().getNum() + "");
+        holder.tvSpecification.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_group_name() + ": ");
+        holder.tvDefault.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_name());
+
 
         holder.tvCallCustomer.setOnClickListener(v -> {
             if (onclickButton != null) {
@@ -86,12 +91,20 @@ public class DistributionOrderAdapter extends BaseLoadMoreAdapter<DeliverGoodsDa
                 onclickButton.setDelivery(position);
             }
         });
+        holder.llDistribution.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onclickButton != null){
+                    onclickButton.deleteShare(position);
+                }
+            }
+        });
     }
 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mDatas.size() < PAGESIZE ? mDatas.size() : mDatas.size() + 1;
     }
 
     public interface OnclickButton {
@@ -100,6 +113,8 @@ public class DistributionOrderAdapter extends BaseLoadMoreAdapter<DeliverGoodsDa
         void IvCallCustomer(int position);
 
         void setDelivery(int position);
+
+        void deleteShare(int position);
 
     }
 
@@ -142,11 +157,16 @@ public class DistributionOrderAdapter extends BaseLoadMoreAdapter<DeliverGoodsDa
         TextView tvBottomLine;
         @BindView(R.id.tv_ok)
         TextView tvOk;
+        @BindView(R.id.tv_default)
+        TextView tvDefault;
         @BindView(R.id.ll_bottom)
         RelativeLayout llBottom;
+        @BindView(R.id.ll_distribution)
+        LinearLayout llDistribution;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 

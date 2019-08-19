@@ -24,9 +24,13 @@ public class DeliverDetailAdapter extends BaseAdapter {
         this.mContext = mContext;
     }
 
+    public void setmDatas(List<DeliverGoodsDetailDataBean.GoodsListBean> datas){
+        this.mDatas = datas;
+        notifyDataSetChanged();
+    }
     @Override
     public int getCount() {
-        return mDatas.size();
+        return mDatas == null ? 0 : mDatas.size();
     }
 
     @Override
@@ -47,14 +51,15 @@ public class DeliverDetailAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.item_order_product, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.ivPhoto.load(mDatas.get(position).getPic());
         viewHolder.tvProductName.setText(mDatas.get(position).getName());
-        viewHolder.tvSpecification.setText(mDatas.get(position).getAttr().getAttr_name());
-        viewHolder.tvPrice.setText(mDatas.get(position).getTotal_price());
-        viewHolder.tvAmount.setText(mDatas.get(position).getNum());
+        viewHolder.tvSpecification.setText(mDatas.get(position).getAttr().get(0).getAttr_group_name()+":");
+        viewHolder.tvDefault.setText(mDatas.get(position).getAttr().get(0).getAttr_name());
+        viewHolder.tvPrice.setText("￥"+mDatas.get(position).getTotal_price()+"");
+        viewHolder.tvAmount.setText("x"+mDatas.get(position).getNum()+"");
         return convertView;
     }
 
@@ -65,6 +70,8 @@ public class DeliverDetailAdapter extends BaseAdapter {
         TextView tvProductName;
         @BindView(R.id.tv_specification)
         TextView tvSpecification;
+        @BindView(R.id.tv_default)
+        TextView tvDefault;
         @BindView(R.id.tv_price)
         TextView tvPrice;
         @BindView(R.id.tv_amount)

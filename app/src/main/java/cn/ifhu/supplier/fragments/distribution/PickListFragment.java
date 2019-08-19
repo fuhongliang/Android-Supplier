@@ -90,7 +90,8 @@ public class PickListFragment extends BaseFragment {
 
                     @Override
                     protected void onSuccees(BaseEntity t) throws Exception {
-                        ToastHelper.makeText(t.getMessage()).show();
+                        ToastHelper.makeText("拣货成功").show();
+                        getPickGoods(1);
                     }
                 });
             }
@@ -152,11 +153,11 @@ public class PickListFragment extends BaseFragment {
             protected void onSuccees(BaseEntity<PickListDataBean> t) throws Exception {
                 if (pages == 1) {
                     mDatas.clear();
-                    mDatas.add(t.getData().getPick_list());
+                    mDatas.addAll(t.getData().getPick_list());
                     newPickListAdapter.setData(mDatas);
                 } else {
-                    mDatas.add(t.getData().getPick_list());
-                    newPickListAdapter.appendData(t.getData().getPick_list());
+                    mDatas.addAll(t.getData().getPick_list());
+                    newPickListAdapter.appendList(t.getData().getPick_list());
                 }
             }
         });

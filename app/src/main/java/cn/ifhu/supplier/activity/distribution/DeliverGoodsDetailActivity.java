@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +27,7 @@ import cn.ifhu.supplier.net.BaseObserver;
 import cn.ifhu.supplier.net.DistributionService;
 import cn.ifhu.supplier.net.RetrofitAPIManager;
 import cn.ifhu.supplier.net.SchedulerUtils;
+import cn.ifhu.supplier.utils.DateUtil;
 import cn.ifhu.supplier.utils.DialogUtils;
 import cn.ifhu.supplier.utils.ToastHelper;
 import cn.ifhu.supplier.view.ExpandListView;
@@ -63,6 +68,15 @@ public class DeliverGoodsDetailActivity extends BaseActivity {
     TextView tvSave;
 
     DeliverDetailAdapter deliverDetailAdapter;
+    List<DeliverGoodsDetailDataBean.GoodsListBean> mData = new ArrayList<>();
+
+    int deliverId;
+    @BindView(R.id.sl_view)
+    ScrollView slView;
+    @BindView(R.id.ll_package)
+    LinearLayout llPackage;
+    @BindView(R.id.placeholder)
+    View placeholder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,15 +84,34 @@ public class DeliverGoodsDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_picking_details);
         ButterKnife.bind(this);
         tvTitle.setText("配货单详情");
-        setDeliverGoodsDatail();
+        deliverId = getIntent().getIntExtra("deliver_id", 0);
+        deliverDetailAdapter = new DeliverDetailAdapter(mData, this);
+        listView.setAdapter(deliverDetailAdapter);
+        slView.smoothScrollTo(0, 0);
+        getDeliverGoodsDatail();
+    }
+
+    private void setView(int isSend) {
+        if (isSend == 0) {
+            tvOrderState.setText("待配送");
+            tvOrderState.setTextColor(getResources().getColor(R.color.order_service_color));
+            placeholder.setVisibility(View.VISIBLE);
+            tvSave.setVisibility(View.VISIBLE);
+        } else {
+            tvOrderState.setText("已配送");
+            tvOrderState.setTextColor(getResources().getColor(R.color.order_comfirm_color));
+            placeholder.setVisibility(View.GONE);
+            tvSave.setVisibility(View.GONE);
+        }
     }
 
     /**
      * 配货单详情接口
      */
-    public void setDeliverGoodsDatail() {
+    public void getDeliverGoodsDatail() {
         setLoadingMessageIndicator(true);
         SetDeliverPostBean setDeliverPostBean = new SetDeliverPostBean();
+        setDeliverPostBean.setDeliver_id(deliverId);
         RetrofitAPIManager.create(DistributionService.class).deliverGoodsDetail(setDeliverPostBean)
                 .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<DeliverGoodsDetailDataBean>(true) {
             @Override
@@ -88,21 +121,17 @@ public class DeliverGoodsDetailActivity extends BaseActivity {
 
             @Override
             protected void onSuccees(BaseEntity<DeliverGoodsDetailDataBean> t) throws Exception {
-                if (t.data.getDeliver().getIs_send() == 1) {
-                    tvOrderState.setText("待配送");
-                    tvOrderState.setTextColor(getResources().getColor(R.color.order_service_color));
-                } else {
-                    tvOrderState.setText("已配送");
-                    tvOrderState.setTextColor(getResources().getColor(R.color.order_comfirm_color));
-                }
+
+                setView(t.data.getDeliver().getIs_send());
+
                 tvCustomerName.setText(t.data.getDeliver().getName());
                 tvCustomerPhone.setText(t.data.getDeliver().getMobile());
-                tvCustomerAddress.setText(t.data.getDeliver().getDistrict());
-                tvOrderSn.setText(t.data.getDeliver().getDeliver_id());
-                tvCreateTime.setText(t.data.getDeliver().getAddtime());
-                tvGoodsCount.setText(t.data.getDeliver().getGoods_attr_count());
-                tvGoodsNum.setText(t.data.getDeliver().getNum());
-                tvTotalPayPrice.setText(t.data.getDeliver().getTotal_price());
+                tvCustomerAddress.setText("详细地址: " + t.data.getDeliver().getDistrict());
+                tvOrderSn.setText(t.data.getDeliver().getDeliver_id() + "");
+                tvCreateTime.setText(DateUtil.stampToDate(t.data.getDeliver().getAddtime(), " ") + "");
+                tvGoodsCount.setText(t.data.getDeliver().getGoods_attr_count() + "" + "种");
+                tvGoodsNum.setText(t.data.getDeliver().getNum() + "" + "件");
+                tvTotalPayPrice.setText("￥" + t.data.getDeliver().getTotal_price() + "");
                 tvCallCustomer.setOnClickListener(v -> DialogUtils.showConfirmDialog("温馨提示", "是否拨打团长电话", "取消", "确定", getSupportFragmentManager(), new ConfirmDialog.ButtonOnclick() {
                     @Override
                     public void cancel() {
@@ -131,10 +160,11 @@ public class DeliverGoodsDetailActivity extends BaseActivity {
                         startActivity(intent);
                     }
                 }));
-                listView.setAdapter(deliverDetailAdapter);
+                deliverDetailAdapter.setmDatas(t.getData().getGoods_list());
             }
         });
     }
+
     @OnClick(R.id.iv_back)
     public void onIvBackClicked() {
         finish();
@@ -147,6 +177,7 @@ public class DeliverGoodsDetailActivity extends BaseActivity {
          */
         setLoadingMessageIndicator(true);
         SetDeliverPostBean setDeliverPostBean = new SetDeliverPostBean();
+        setDeliverPostBean.setDeliver_id(deliverId);
         RetrofitAPIManager.create(DistributionService.class).setDeliver(setDeliverPostBean)
                 .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<Object>(true) {
             @Override
@@ -157,11 +188,11 @@ public class DeliverGoodsDetailActivity extends BaseActivity {
             @Override
             protected void onSuccees(BaseEntity t) throws Exception {
                 ToastHelper.makeText(t.getMessage()).show();
+                finish();
             }
 
         });
     }
-
 
 
 }

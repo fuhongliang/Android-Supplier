@@ -1,13 +1,13 @@
 package cn.ifhu.supplier.model.newbean.post;
 
 public class SharePostBean extends BasePostBean {
-    private String Share_id;
+    private int share_id;
 
-    public String getShare_id() {
-        return Share_id;
+    public int getShare_id() {
+        return share_id;
     }
 
-    public void setShare_id(String share_id) {
-        Share_id = share_id;
+    public void setShare_id(int share_id) {
+        this.share_id = share_id;
     }
 }

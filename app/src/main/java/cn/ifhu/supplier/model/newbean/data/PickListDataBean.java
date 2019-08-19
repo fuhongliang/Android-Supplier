@@ -8,13 +8,13 @@ public class PickListDataBean {
      * pick_list : {"huodan_id":4,"total_pay_price":"26689.00","goods_num":11,"create_time":1565768328,"pick_status":0,"goods_info":{"num":1,"total_price":"3520.00","is_pick":0,"attr":[{"attr_id":73,"attr_group_name":"颜色","attr_name":"K2指纹锁【左右开向】","no":""}],"name":"安全防盗门 智能门家庭进户门 入户门指纹密码锁门 莱茵河系列","pic":"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/aa/aa86fc4feb44657a80f92c6dc5b705c56cdbebd9.png"}}
      */
 
-    private PickListBean pick_list;
+    private List<PickListBean> pick_list;
 
-    public PickListBean getPick_list() {
+    public List<PickListBean> getPick_list() {
         return pick_list;
     }
 
-    public void setPick_list(PickListBean pick_list) {
+    public void setPick_list(List<PickListBean> pick_list) {
         this.pick_list = pick_list;
     }
 

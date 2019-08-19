@@ -1,5 +1,6 @@
 package cn.ifhu.supplier.fragments.distribution;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,10 +25,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.ifhu.supplier.R;
+import cn.ifhu.supplier.activity.distribution.DeliverGoodsDetailActivity;
+import cn.ifhu.supplier.activity.home.DeleteShareActivity;
 import cn.ifhu.supplier.adapter.DistributionOrderAdapter;
 import cn.ifhu.supplier.base.BaseFragment;
+import cn.ifhu.supplier.base.BaseLoadMoreAdapter;
 import cn.ifhu.supplier.base.LoadMoreScrollListener;
 import cn.ifhu.supplier.model.bean.BaseEntity;
+import cn.ifhu.supplier.model.newbean.data.AllEvaluationDataBean;
 import cn.ifhu.supplier.model.newbean.data.DeliverGoodsDataBean;
 import cn.ifhu.supplier.model.newbean.post.BasePostBean;
 import cn.ifhu.supplier.model.newbean.post.PaginationPostBean;
@@ -38,6 +42,7 @@ import cn.ifhu.supplier.net.DistributionService;
 import cn.ifhu.supplier.net.RetrofitAPIManager;
 import cn.ifhu.supplier.net.SchedulerUtils;
 import cn.ifhu.supplier.utils.DialogUtils;
+import cn.ifhu.supplier.utils.DividerItemDecoration;
 import cn.ifhu.supplier.utils.ToastHelper;
 import cn.ifhu.supplier.view.dialog.nicedialog.ConfirmDialog;
 
@@ -46,7 +51,6 @@ import cn.ifhu.supplier.view.dialog.nicedialog.ConfirmDialog;
  */
 public class DistributionOrderFragment extends BaseFragment {
     Unbinder unbinder;
-
 
     @BindView(R.id.recycler_list_test)
     RecyclerView recyclerList;
@@ -77,7 +81,6 @@ public class DistributionOrderFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerList.setLayoutManager(new LinearLayoutManager(getActivity()));
         newDistrbutionOrderAdapter = new DistributionOrderAdapter(mDatas, getActivity(), new DistributionOrderAdapter.OnclickButton() {
             @Override
             public void TvCallCustomer(int position) {
@@ -122,6 +125,7 @@ public class DistributionOrderFragment extends BaseFragment {
                  */
                 setLoadingMessageIndicator(true);
                 SetDeliverPostBean setDeliverPostBean = new SetDeliverPostBean();
+                setDeliverPostBean.setDeliver_id(mDatas.get(position).getDeliver_id());
                 RetrofitAPIManager.create(DistributionService.class).setDeliver(setDeliverPostBean)
                         .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<Object>(true) {
                     @Override
@@ -133,31 +137,52 @@ public class DistributionOrderFragment extends BaseFragment {
                     protected void onSuccees(BaseEntity t) throws Exception {
                         ToastHelper.makeText(t.getMessage()).show();
                     }
-
                 });
             }
+
+            @Override
+            public void deleteShare(int position) {
+                if (getActivity() != null){
+                    Intent intent = new Intent(new Intent(getActivity(), DeliverGoodsDetailActivity.class));
+                    intent.putExtra("deliver_id",mDatas.get(position).getDeliver_id());
+                    startActivity(intent);
+                }
+            }
         });
-        newDistrbutionOrderAdapter.setLoadMordListener(loadIndex -> {
+        newDistrbutionOrderAdapter.setLoadMordListener(new BaseLoadMoreAdapter.LoadMoreListenter() {
+            @Override
+            public void onLoadMore(int loadIndex) {
+                getDeliverGoods(loadIndex);
+            }
         });
-        recyclerList.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        recyclerList.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
         recyclerList.setAdapter(newDistrbutionOrderAdapter);
         recyclerList.setOnScrollListener(new LoadMoreScrollListener(recyclerList));
+        setRefreshLayout();
         getDeliverGoods(1);
     }
+    /**
+     * 刷新监听
+     */
+    @SuppressLint("ResourceAsColor")
+    public void setRefreshLayout() {
+        layoutSwipeRefresh.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark);
 
+        layoutSwipeRefresh.setOnRefreshListener(() -> getDeliverGoods(1));
+    }
     /**
      * 配货单列表接口、分页
      */
     public void getDeliverGoods(int pages) {
-        setLoadingMessageIndicator(true);
-        PaginationPostBean  paginationPostBean = new PaginationPostBean();
+        layoutSwipeRefresh.setRefreshing(true);
+        PaginationPostBean paginationPostBean = new PaginationPostBean();
         paginationPostBean.setLimit(10);
         paginationPostBean.setPage(pages);
         RetrofitAPIManager.create(DistributionService.class).deliverGoods(paginationPostBean)
                 .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<DeliverGoodsDataBean>(false) {
             @Override
             protected void onApiComplete() {
-                setLoadingMessageIndicator(false);
+                layoutSwipeRefresh.setRefreshing(false);
             }
 
             @Override
@@ -184,7 +209,6 @@ public class DistributionOrderFragment extends BaseFragment {
             }
         });
     }
-
 
     @Override
     public void onDestroyView() {

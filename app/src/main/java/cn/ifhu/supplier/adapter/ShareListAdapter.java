@@ -15,23 +15,23 @@ import cn.ifhu.supplier.base.BaseLoadMoreAdapter;
 import cn.ifhu.supplier.model.newbean.data.ShareListDataBean;
 import cn.ifhu.supplier.view.GlideImageView.GlideImageView;
 
-public class ShareListAdapter extends BaseLoadMoreAdapter<ShareListDataBean.ShareBean, ShareListAdapter.ViewHolder> {
+public class ShareListAdapter extends BaseLoadMoreAdapter<ShareListDataBean.ListBean, ShareListAdapter.ViewHolder> {
 
 
-    private List<ShareListDataBean.ShareBean> mDatas;
+    private List<ShareListDataBean.ListBean> mDatas;
     private Context mContext;
     private OnclickButton onclickButton;
     private int index;
 
 
     @Override
-    public void setData(List<ShareListDataBean.ShareBean> data) {
+    public void setData(List<ShareListDataBean.ListBean> data) {
         mDatas = data;
         resetLodingMore();
         notifyDataSetChanged();
     }
 
-    public ShareListAdapter(List<ShareListDataBean.ShareBean> mDatas, Context mContext, OnclickButton onclickButton,int index) {
+    public ShareListAdapter(List<ShareListDataBean.ListBean> mDatas, Context mContext, OnclickButton onclickButton,int index) {
         this.mDatas = mDatas;
         this.mContext = mContext;
         this.onclickButton = onclickButton;
@@ -45,7 +45,7 @@ public class ShareListAdapter extends BaseLoadMoreAdapter<ShareListDataBean.Shar
     }
 
     @Override
-    public List<ShareListDataBean.ShareBean> getDataList() {
+    public List<ShareListDataBean.ListBean> getDataList() {
         return mDatas;
     }
 
@@ -54,18 +54,39 @@ public class ShareListAdapter extends BaseLoadMoreAdapter<ShareListDataBean.Shar
         holder.ivAvatar.load(mDatas.get(position).getAvatar_url());
         holder.tvName.setText(mDatas.get(position).getName());
         holder.tvAddress.setText(mDatas.get(position).getAddress());
-        holder.ok.setOnClickListener(v -> {
-            if (onclickButton != null) {
-                if (index == 0){
-                    onclickButton.addShare(position);
-                    holder.ok.setText("添加");
-                }else {
-                    onclickButton.deleteShare(position);
-                    holder.ok.setText("删除");
+        if (index == 0){
+            holder.ok.setText("添加");
+            holder.ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onclickButton != null){
+                        onclickButton.addShare(position);
+                    }
                 }
-
-            }
-        });
+            });
+        }else {
+            holder.ok.setText("删除");
+            holder.ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onclickButton != null){
+                        onclickButton.deleteShare(position);
+                    }
+                }
+            });
+        }
+//        holder.ok.setOnClickListener(v -> {
+//            if (onclickButton != null) {
+//                if (index == 0){
+//                    holder.ok.setText("添加");
+//                    onclickButton.addShare(position);
+//                }else {
+//                    holder.ok.setText("删除");
+//                    onclickButton.deleteShare(position);
+//                }
+//
+//            }
+//        });
     }
 
     @Override

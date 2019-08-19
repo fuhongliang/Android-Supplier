@@ -12,10 +12,10 @@
         android:id="@+id/sl_view"
         android:layout_below="@id/header"
         android:layout_width="match_parent"
-        android:paddingBottom="91dp"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/ll_package"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -277,6 +277,10 @@
                     android:divider="@null"
                     android:dividerHeight="15dp" />
             </LinearLayout>
+            <View
+                android:id="@+id/placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="91dp"/>
         </LinearLayout>
 
     </ScrollView>

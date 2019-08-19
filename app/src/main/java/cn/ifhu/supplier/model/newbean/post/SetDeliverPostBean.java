@@ -1,13 +1,13 @@
 package cn.ifhu.supplier.model.newbean.post;
 
 public class SetDeliverPostBean extends BasePostBean {
-    private String deiver_id;
+    private int deliver_id;
 
-    public String getDeiver_id() {
-        return deiver_id;
+    public int getDeliver_id() {
+        return deliver_id;
     }
 
-    public void setDeiver_id(String deiver_id) {
-        this.deiver_id = deiver_id;
+    public void setDeliver_id(int deliver_id) {
+        this.deliver_id = deliver_id;
     }
 }

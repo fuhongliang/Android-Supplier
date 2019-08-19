@@ -1,6 +1,5 @@
 package cn.ifhu.supplier.activity.distribution;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,6 +26,7 @@ import cn.ifhu.supplier.net.DistributionService;
 import cn.ifhu.supplier.net.RetrofitAPIManager;
 import cn.ifhu.supplier.net.SchedulerUtils;
 import cn.ifhu.supplier.utils.DateUtil;
+import cn.ifhu.supplier.utils.ToastHelper;
 import cn.ifhu.supplier.view.ExpandListView;
 
 /**
@@ -73,37 +73,21 @@ public class PickingDetailsActivity extends BaseActivity {
     List<PickingDetailsDataBean.GoodsListBean> mData = new ArrayList<>();
 
     PickingDetailsAdapter newpickingDetailsAdapter;
+    int huodanId;
+    @BindView(R.id.placeholder)
+    View placeholder;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picking_details);
         ButterKnife.bind(this);
         tvTitle.setText("拣货单详情");
-        newpickingDetailsAdapter = new PickingDetailsAdapter(mData,this);
+        huodanId = getIntent().getIntExtra("Huodan_id", 0);
+        newpickingDetailsAdapter = new PickingDetailsAdapter(mData, this);
         listView.setAdapter(newpickingDetailsAdapter);
         getPickingDetails();
     }
-
-//    public void setDatas() {
-//        Intent intent = getIntent();
-//        tvOrderSn.setText(intent.getIntExtra("Huodan_id", 0) + "");
-//        tvCreateTime.setText(DateUtil.stampToDate(intent.getIntExtra("Create_time", 0), " "));
-//        tvGoodsNum.setText(intent.getIntExtra("Goods_num", 0) + "件");
-//        tvGoodsCount.setText(intent.getIntExtra("Goods_count", 0) + "" + "种");
-//        tvTotalPayPrice.setText("￥" + intent.getStringExtra("Total_pay_price"));
-//        if (intent.getIntExtra("pick_status", 0) == 0) {
-//            tvOrderState.setText("待拣货");
-//            tvOrderState.setTextColor(getResources().getColor(R.color.order_service_color));
-//            rlCustomer.setVisibility(View.GONE);
-//            tvSave.setVisibility(View.VISIBLE);
-//
-//        } else {
-//            tvOrderState.setText("已拣货");
-//            tvOrderState.setTextColor(getResources().getColor(R.color.order_comfirm_color));
-//            rlCustomer.setVisibility(View.GONE);
-//            tvSave.setVisibility(View.GONE);
-//        }
-//    }
 
     /**
      * 拣货单详情接口
@@ -111,9 +95,9 @@ public class PickingDetailsActivity extends BaseActivity {
 
     public void getPickingDetails() {
         setLoadingMessageIndicator(true);
-        Intent intent = getIntent();
         SetPickingPostBean setPickingPostBean = new SetPickingPostBean();
-        setPickingPostBean.setHuodan_id(intent.getIntExtra("Huodan_id", 0));
+        Intent intent = getIntent();
+        setPickingPostBean.setHuodan_id(huodanId);
         tvCreateTime.setText(DateUtil.stampToDate(intent.getIntExtra("Create_time", 0), " "));
         tvGoodsNum.setText(intent.getIntExtra("Goods_num", 0) + "件");
         tvGoodsCount.setText(intent.getIntExtra("Goods_count", 0) + "" + "种");
@@ -123,12 +107,14 @@ public class PickingDetailsActivity extends BaseActivity {
             tvOrderState.setTextColor(getResources().getColor(R.color.order_service_color));
             rlCustomer.setVisibility(View.GONE);
             tvSave.setVisibility(View.VISIBLE);
+            placeholder.setVisibility(View.VISIBLE);
 
         } else {
             tvOrderState.setText("已拣货");
             tvOrderState.setTextColor(getResources().getColor(R.color.order_comfirm_color));
             rlCustomer.setVisibility(View.GONE);
             tvSave.setVisibility(View.GONE);
+            placeholder.setVisibility(View.GONE);
         }
         RetrofitAPIManager.create(DistributionService.class).pickDetail(setPickingPostBean)
                 .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<PickingDetailsDataBean>(true) {
@@ -136,6 +122,7 @@ public class PickingDetailsActivity extends BaseActivity {
             protected void onApiComplete() {
                 setLoadingMessageIndicator(false);
             }
+
             @Override
             protected void onSuccees(BaseEntity<PickingDetailsDataBean> t) throws Exception {
                 newpickingDetailsAdapter.setmData(t.getData().getGoods_list());
@@ -150,6 +137,25 @@ public class PickingDetailsActivity extends BaseActivity {
 
     @OnClick(R.id.tv_save)
     public void onTvSaveClicked() {
+        /**
+         * 设置拣货接口
+         */
+        setLoadingMessageIndicator(true);
+        SetPickingPostBean setPickingPostBean = new SetPickingPostBean();
+        setPickingPostBean.setHuodan_id(huodanId);
+        RetrofitAPIManager.create(DistributionService.class).setPick(setPickingPostBean)
+                .compose(SchedulerUtils.ioMainScheduler()).subscribe(new BaseObserver<Object>(true) {
+            @Override
+            protected void onApiComplete() {
+                setLoadingMessageIndicator(false);
+            }
+
+            @Override
+            protected void onSuccees(BaseEntity t) throws Exception {
+                ToastHelper.makeText("拣货成功").show();
+                finish();
+            }
+        });
 
     }
 }

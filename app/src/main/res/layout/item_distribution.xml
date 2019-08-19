@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/ll_distribution"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
     android:background="@drawable/bg_new_order_white"
@@ -145,10 +146,22 @@
             android:layout_toEndOf="@id/iv_photo"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="规格：默认"
+            android:text="规格"
             android:textColor="@color/hint_text_color"
             android:textSize="13sp" />
-
+        <TextView
+            android:id="@+id/tv_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_product_name"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@id/tv_specification"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="默认"
+            android:textColor="@color/hint_text_color"
+            android:textSize="13sp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
