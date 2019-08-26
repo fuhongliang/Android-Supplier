@@ -39,7 +39,7 @@ public class DistributionFragment extends BaseFragment {
     @BindView(R.id.vp_content)
     ViewPager vpContent;
 
-    private List<String> mList = Arrays.asList("商品拣货单", "配货单");
+    private List<String> mList = Arrays.asList("商品拣货单");
     FragmentPagerAdapter mAdapter;
     private List<Fragment> mFragmentArrayList = new ArrayList<Fragment>();
 
@@ -53,10 +53,11 @@ public class DistributionFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_evaluation_management, container, false);
         unbinder = ButterKnife.bind(this, view);
+        rvpIndicator.setVisibility(View.GONE);
         ivBack.setVisibility(View.GONE);
-        tvTitle.setText("配货清单");
+        tvTitle.setText("拣货清单");
         mFragmentArrayList.add(PickListFragment.newInstance());
-        mFragmentArrayList.add(DistributionOrderFragment.newInstance());
+//        mFragmentArrayList.add(DistributionOrderFragment.newInstance());
         return view;
     }
 

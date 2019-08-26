@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigation_order"
         android:icon="@drawable/dibu_ic_dd_x"
-        android:title="配货清单" />
+        android:title="拣货清单" />
     <item
         android:id="@+id/navigation_goods"
         android:icon="@drawable/dibu_ic_sp_x"

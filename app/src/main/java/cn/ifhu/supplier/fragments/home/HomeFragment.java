@@ -373,9 +373,9 @@ public class HomeFragment extends BaseFragment {
 //        mTvUnpayOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_pay_orders() + "");
 //        mTvUnshippingOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_send_orders() + "");
 //        mTvProblemOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getRefunding_orders() + "");
-        mTvUnpayOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_pick_goods());
-        mTvUnshippingOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_send_goods());
-        mTvProblemOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getGoods_count());
+        mTvUnpayOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_pick_goods()+"");
+        mTvUnshippingOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getWait_send_goods()+"");
+        mTvProblemOrders.setText(mHomeDataBean.getStore().getOrder_statistics().getGoods_count()+"");
     }
 
 //    @OnClick(R.id.ll_notice)
