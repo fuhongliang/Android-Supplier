@@ -32,6 +32,15 @@ public class PickListDataBean {
         private String total_pay_price;
         private int goods_num;
         private int goods_count;
+        private String pick_no;
+
+        public String getPick_no() {
+            return pick_no;
+        }
+
+        public void setPick_no(String pick_no) {
+            this.pick_no = pick_no;
+        }
 
         public int getGoods_count() {
             return goods_count;

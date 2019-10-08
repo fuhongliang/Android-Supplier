@@ -56,7 +56,7 @@
             android:id="@+id/tv_protocol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="《一美一物保证金协议》"
+            android:text="《懂家优选保证金协议》"
             android:textSize="12sp"
             android:textColor="#24A1FF"
             />

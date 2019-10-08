@@ -76,6 +76,8 @@ public class PickingDetailsActivity extends BaseActivity {
     int huodanId;
     @BindView(R.id.placeholder)
     View placeholder;
+    @BindView(R.id.pick)
+    TextView pick;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,6 +85,7 @@ public class PickingDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_picking_details);
         ButterKnife.bind(this);
         tvTitle.setText("拣货单详情");
+        pick.setText("拣货单号:");
         huodanId = getIntent().getIntExtra("Huodan_id", 0);
         newpickingDetailsAdapter = new PickingDetailsAdapter(mData, this);
         listView.setAdapter(newpickingDetailsAdapter);
@@ -98,6 +101,7 @@ public class PickingDetailsActivity extends BaseActivity {
         SetPickingPostBean setPickingPostBean = new SetPickingPostBean();
         Intent intent = getIntent();
         setPickingPostBean.setHuodan_id(huodanId);
+        tvOrderSn.setText(intent.getStringExtra("pick_no"));
         tvCreateTime.setText(DateUtil.stampToDate(intent.getIntExtra("Create_time", 0), " "));
         tvGoodsNum.setText(intent.getIntExtra("Goods_num", 0) + "件");
         tvGoodsCount.setText(intent.getIntExtra("Goods_count", 0) + "" + "种");

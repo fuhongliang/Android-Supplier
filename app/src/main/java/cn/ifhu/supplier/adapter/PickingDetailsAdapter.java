@@ -59,14 +59,12 @@ public class PickingDetailsAdapter extends BaseAdapter {
         }
         viewHolder.ivPhoto.load(mData.get(position).getPic());
         viewHolder.tvProductName.setText(mData.get(position).getName());
-//        String s = "";
-//        for (PickingDetailsDataBean.GoodsListBean.AttrBean bean){
-//             s += bean.getAttr_group_name();
-//        }
-        viewHolder.tvSpecification.setText(mData.get(position).getAttr().get(0).getAttr_group_name());
-        viewHolder.tvDefault.setText(mData.get(position).getAttr().get(0).getAttr_name());
-        viewHolder.tvPrice.setText("￥" + mData.get(position).getTotal_price()+"");
-        viewHolder.tvAmount.setText("x" + mData.get(position).getNum()+"");
+        if (mData.get(position).getAttr() != null && mData.get(position).getAttr().size() > 0) {
+            viewHolder.tvSpecification.setText(mData.get(position).getAttr().get(0).getAttr_group_name()+": ");
+            viewHolder.tvDefault.setText(mData.get(position).getAttr().get(0).getAttr_name());
+            viewHolder.tvPrice.setText("￥" + mData.get(position).getTotal_price() + "");
+            viewHolder.tvAmount.setText("x" + mData.get(position).getNum() + "");
+        }
         return convertView;
     }
 

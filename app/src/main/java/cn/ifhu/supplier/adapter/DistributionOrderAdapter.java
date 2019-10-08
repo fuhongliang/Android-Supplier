@@ -51,7 +51,7 @@ public class DistributionOrderAdapter extends BaseLoadMoreAdapter<DeliverGoodsDa
 
     @Override
     public void bindOtherViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvOrderSn.setText(mDatas.get(position).getDeliver_id() + "");
+        holder.tvOrderSn.setText("配货单号: "+mDatas.get(position).getSend_no());
         holder.tvOrderTime.setText("生成时间: " + DateUtil.stampToDate(mDatas.get(position).getAddtime(), " ") + "");
         if (mDatas.get(position).getIs_send() == 0) {
             holder.tvOrderState.setText("待配送");
@@ -71,9 +71,12 @@ public class DistributionOrderAdapter extends BaseLoadMoreAdapter<DeliverGoodsDa
         holder.ivPhoto.load(mDatas.get(position).getGoods_info().getPic());
         holder.tvProductName.setText(mDatas.get(position).getGoods_info().getName());
         holder.tvPrice.setText("￥" + mDatas.get(position).getGoods_info().getTotal_price() + "");
-        holder.tvAmount.setText("x" + mDatas.get(position).getGoods_info().getNum() + "");
-        holder.tvSpecification.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_group_name() + ": ");
-        holder.tvDefault.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_name());
+        if (mDatas.get(position).getGoods_info().getAttr() != null && mDatas.get(position).getGoods_info().getAttr().size() > 0) {
+            holder.tvAmount.setText("x" + mDatas.get(position).getGoods_info().getNum() + "");
+            holder.tvSpecification.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_group_name() + ": ");
+            holder.tvDefault.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_name());
+        }
+
 
 
         holder.tvCallCustomer.setOnClickListener(v -> {
@@ -94,7 +97,7 @@ public class DistributionOrderAdapter extends BaseLoadMoreAdapter<DeliverGoodsDa
         holder.llDistribution.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onclickButton != null){
+                if (onclickButton != null) {
                     onclickButton.deleteShare(position);
                 }
             }

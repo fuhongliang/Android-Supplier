@@ -123,11 +123,10 @@ public class DeliverGoodsDetailActivity extends BaseActivity {
             protected void onSuccees(BaseEntity<DeliverGoodsDetailDataBean> t) throws Exception {
 
                 setView(t.data.getDeliver().getIs_send());
-
+                tvOrderSn.setText(t.data.getDeliver().getSend_no());
                 tvCustomerName.setText(t.data.getDeliver().getName());
                 tvCustomerPhone.setText(t.data.getDeliver().getMobile());
                 tvCustomerAddress.setText("详细地址: " + t.data.getDeliver().getDistrict());
-                tvOrderSn.setText(t.data.getDeliver().getDeliver_id() + "");
                 tvCreateTime.setText(DateUtil.stampToDate(t.data.getDeliver().getAddtime(), " ") + "");
                 tvGoodsCount.setText(t.data.getDeliver().getGoods_attr_count() + "" + "种");
                 tvGoodsNum.setText(t.data.getDeliver().getNum() + "" + "件");

@@ -215,7 +215,6 @@ public class AllEvaluationFragment extends BaseFragment {
 
             @Override
             protected void onSuccees(BaseEntity<AllEvaluationDataBean> t) throws Exception {
-
                     if (pages == 1) {
                         mDatas.clear();
                         mDatas.addAll(t.getData().getComment());

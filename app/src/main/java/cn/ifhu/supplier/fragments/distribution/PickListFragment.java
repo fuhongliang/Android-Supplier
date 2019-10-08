@@ -106,6 +106,7 @@ public class PickListFragment extends BaseFragment {
                     intent.putExtra("Goods_count",mDatas.get(position).getGoods_count());
                     intent.putExtra("Total_pay_price",mDatas.get(position).getTotal_pay_price());
                     intent.putExtra("pick_status",mDatas.get(position).getPick_status());
+                    intent.putExtra("pick_no",mDatas.get(position).getPick_no());
                     startActivity(intent);
                 }
 

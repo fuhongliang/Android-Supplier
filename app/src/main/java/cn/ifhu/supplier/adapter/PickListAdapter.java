@@ -22,7 +22,6 @@ import cn.ifhu.supplier.view.GlideImageView.GlideImageView;
 public class PickListAdapter extends BaseLoadMoreAdapter<PickListDataBean.PickListBean, PickListAdapter.ViewHolder> {
 
 
-
     private List<PickListDataBean.PickListBean> mDatas;
     private Context mContext;
     private OnclickButton onclickButton;
@@ -52,7 +51,8 @@ public class PickListAdapter extends BaseLoadMoreAdapter<PickListDataBean.PickLi
 
     @Override
     public void bindOtherViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvCreateTime.setText("生成时间:" + DateUtil.stampToDate(mDatas.get(position).getCreate_time()," ") + "");
+        holder.tvOrderSn.setText("拣货单号:" + mDatas.get(position).getPick_no());
+        holder.tvCreateTime.setText("生成时间:" + DateUtil.stampToDate(mDatas.get(position).getCreate_time(), " ") + "");
         holder.tvGoodsNum.setText("总共:" + mDatas.get(position).getGoods_num() + "" + "件");
         holder.tvGoodsCount.setText("共" + mDatas.get(position).getGoods_count() + "" + "类商品");
         holder.tvTotalPayPrice.setText("(合计￥" + mDatas.get(position).getTotal_pay_price() + ")");
@@ -67,10 +67,12 @@ public class PickListAdapter extends BaseLoadMoreAdapter<PickListDataBean.PickLi
         }
         holder.tvProductName.setText(mDatas.get(position).getGoods_info().getName());
         holder.ivPhoto.load(mDatas.get(position).getGoods_info().getPic());
-        holder.tvSpecification.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_group_name()+":");
-        holder.tvDefault.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_name());
-        holder.tvPrice.setText("￥"+mDatas.get(position).getGoods_info().getTotal_price());
-        holder.tvAmount.setText("x"+mDatas.get(position).getGoods_info().getNum() + "");
+        if (mDatas.get(position).getGoods_info().getAttr() != null && mDatas.get(position).getGoods_info().getAttr().size() > 0) {
+            holder.tvSpecification.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_group_name() + ":");
+            holder.tvDefault.setText(mDatas.get(position).getGoods_info().getAttr().get(0).getAttr_name());
+            holder.tvPrice.setText("￥" + mDatas.get(position).getGoods_info().getTotal_price());
+            holder.tvAmount.setText("x" + mDatas.get(position).getGoods_info().getNum() + "");
+        }
         holder.ok.setOnClickListener(v -> {
             if (onclickButton != null) {
                 onclickButton.finishPicking(position);

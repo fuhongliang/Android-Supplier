@@ -24,10 +24,11 @@ public class DeliverDetailAdapter extends BaseAdapter {
         this.mContext = mContext;
     }
 
-    public void setmDatas(List<DeliverGoodsDetailDataBean.GoodsListBean> datas){
+    public void setmDatas(List<DeliverGoodsDetailDataBean.GoodsListBean> datas) {
         this.mDatas = datas;
         notifyDataSetChanged();
     }
+
     @Override
     public int getCount() {
         return mDatas == null ? 0 : mDatas.size();
@@ -56,10 +57,12 @@ public class DeliverDetailAdapter extends BaseAdapter {
         }
         viewHolder.ivPhoto.load(mDatas.get(position).getPic());
         viewHolder.tvProductName.setText(mDatas.get(position).getName());
-        viewHolder.tvSpecification.setText(mDatas.get(position).getAttr().get(0).getAttr_group_name()+":");
-        viewHolder.tvDefault.setText(mDatas.get(position).getAttr().get(0).getAttr_name());
-        viewHolder.tvPrice.setText("￥"+mDatas.get(position).getTotal_price()+"");
-        viewHolder.tvAmount.setText("x"+mDatas.get(position).getNum()+"");
+        if (mDatas.get(position).getAttr() != null && mDatas.get(position).getAttr().size() > 0) {
+            viewHolder.tvSpecification.setText(mDatas.get(position).getAttr().get(0).getAttr_group_name() + ":");
+            viewHolder.tvDefault.setText(mDatas.get(position).getAttr().get(0).getAttr_name());
+            viewHolder.tvPrice.setText("￥" + mDatas.get(position).getTotal_price() + "");
+            viewHolder.tvAmount.setText("x" + mDatas.get(position).getNum() + "");
+        }
         return convertView;
     }
 
